@@ -10,4 +10,5 @@ class %s
         return new %s();
     }
 }
+
 FACTORY;

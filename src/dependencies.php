@@ -1,6 +1,9 @@
 <?php
 // DIC configuration
 
+use Davework\Factory\CreateFileServiceFactory;
+use Davework\Service\CreateFileService;
+
 $container = $app->getContainer();
 
 // view renderer
@@ -17,3 +20,5 @@ $container['logger'] = function ($c) {
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
 };
+
+$container[CreateFileService::class] = new CreateFileServiceFactory();

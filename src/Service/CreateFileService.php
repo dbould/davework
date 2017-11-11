@@ -20,7 +20,7 @@ class CreateFileService implements CreateFileInterface
 
     public function create($fileName, $type)
     {
-        if ($type == 'controller') {
+        if ($type == 'Controller') {
             $location = __DIR__ . '/../../tests/TestFiles/src/Controller/';
             $filePath = $location . $fileName . 'Controller.php';
             $template = $this->templateService->getTemplate('Controller');
@@ -28,7 +28,7 @@ class CreateFileService implements CreateFileInterface
             $content = sprintf($template, $namespace, $fileName . 'Controller');
         }
 
-        if ($type == 'controllerFunctionalTest') {
+        if ($type == 'ControllerFunctionalTest') {
             $location = __DIR__ . '/../../tests/TestFiles/tests/Controller/';
             $filePath = $location . $fileName . 'ControllerTest.php';
             $template = $this->templateService->getTemplate('ControllerFunctionalTest');
@@ -39,7 +39,7 @@ class CreateFileService implements CreateFileInterface
                 $fileName . 'Controller');
         }
 
-        if ($type == 'factory') {
+        if ($type == 'Factory') {
             $location = __DIR__ . '/../../tests/TestFiles/src/Factory/';
             $filePath = $location . $fileName . 'Factory.php';
             $template = $this->templateService->getTemplate('Factory');
@@ -51,7 +51,7 @@ class CreateFileService implements CreateFileInterface
                 $fileName);
         }
 
-        if ($type == 'factoryFunctionalTest') {
+        if ($type == 'FactoryFunctionalTest') {
             $location = __DIR__ . '/../../tests/TestFiles/tests/Factory/';
             $filePath = $location . $fileName . 'FactoryTest.php';
             $template = $this->templateService->getTemplate('FactoryFunctionalTest');
@@ -67,7 +67,7 @@ class CreateFileService implements CreateFileInterface
             );
         }
 
-        if ($type == 'service') {
+        if ($type == 'Service') {
             $location = __DIR__ . '/../../tests/TestFiles/src/Service/';
             $filePath = $location . $fileName . 'Service.php';
             $template = $this->templateService->getTemplate('Service');
@@ -78,7 +78,7 @@ class CreateFileService implements CreateFileInterface
                 $fileName . 'Service');
         }
 
-        if ($type == 'serviceFunctionalTest') {
+        if ($type == 'ServiceFunctionalTest') {
             $location = __DIR__ . '/../../tests/TestFiles/tests/Service/';
             $filePath = $location . $fileName . 'ServiceTest.php';
             $template = $this->templateService->getTemplate('ServiceFunctionalTest');

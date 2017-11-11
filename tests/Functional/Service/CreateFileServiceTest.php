@@ -16,7 +16,7 @@ class CreateFileServiceTest extends SlimTestCase
         }
 
         $service = $this->getContainer()->get(CreateFileService::class);
-        $service->create('Test', 'controller');
+        $service->create('Test', 'Controller');
 
         $expected = <<<'TESTCONTROLLER'
 <?php
@@ -47,7 +47,7 @@ TESTCONTROLLER;
         }
 
         $service = $this->getContainer()->get(CreateFileService::class);
-        $service->create('Test', 'controllerFunctionalTest');
+        $service->create('Test', 'ControllerFunctionalTest');
 
         $expected = <<<'TESTCONTROLLERTEST'
 <?php
@@ -84,7 +84,7 @@ TESTCONTROLLERTEST;
         }
 
         $service = $this->getContainer()->get(CreateFileService::class);
-        $service->create('Test', 'factory');
+        $service->create('Test', 'Factory');
 
         $expected = <<<'TESTFACTORY'
 <?php
@@ -114,7 +114,7 @@ TESTFACTORY;
         }
 
         $service = $this->getContainer()->get(CreateFileService::class);
-        $service->create('Test', 'factoryFunctionalTest');
+        $service->create('Test', 'FactoryFunctionalTest');
 
         $expected = <<<'TESTFACTORYTEST'
 <?php
@@ -149,7 +149,7 @@ TESTFACTORYTEST;
         }
 
         $service = $this->getContainer()->get(CreateFileService::class);
-        $service->create('Test', 'service');
+        $service->create('Test', 'Service');
 
         $expected = <<<'TESTSERVICE'
 <?php
@@ -179,7 +179,7 @@ TESTSERVICE;
         }
 
         $service = $this->getContainer()->get(CreateFileService::class);
-        $service->create('Test', 'serviceFunctionalTest');
+        $service->create('Test', 'ServiceFunctionalTest');
 
         $expected = <<<'TESTSERVICETEST'
 <?php

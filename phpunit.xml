@@ -1,7 +1,8 @@
 <phpunit bootstrap="vendor/autoload.php">
     <testsuites>
-        <testsuite name="SlimSkeleton">
+        <testsuite name="Davework">
             <directory>tests</directory>
+            <exclude>tests/TestFiles</exclude>
         </testsuite>
     </testsuites>
 </phpunit>

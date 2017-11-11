@@ -1,14 +1,12 @@
 <?php
 namespace Davework\FileSpec\Slim;
 
-class FactoryFileSpec
+class FactoryFunctionalTestFileSpecFileSpec
 {
     private $namespace;
     private $fileName;
     private $filePath;
-    private $associatedFiles = [
-
-    ];
+    private $associatedFiles;
 
     public function __construct()
     {

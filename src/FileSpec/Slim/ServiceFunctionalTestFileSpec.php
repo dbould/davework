@@ -1,7 +1,7 @@
 <?php
 namespace Davework\FileSpec\Slim;
 
-class ServiceFileSpec
+class ServiceFunctionalTestFileSpec
 {
     private $namespace;
     private $fileName;

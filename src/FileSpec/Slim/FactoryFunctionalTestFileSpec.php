@@ -8,13 +8,19 @@ class FactoryFunctionalTestFileSpecFileSpec
     private $filePath;
     private $associatedFiles;
 
-    public function __construct()
+    public function __construct($baseNamespace, $fileName, $baseFilePath)
     {
+        $this->namespace = $baseNamespace . '\Factory\\' . $fileName . 'FactoryTest';
+        $this->fileName = $fileName;
+        $this->filePath = $baseFilePath . '\Factory\\' . $fileName . 'FactoryTest';
 
+        $this->associatedFiles = [
+
+        ];
     }
 
     public function getAssociatedFiles()
     {
-
+        return $this->associatedFiles;
     }
 }

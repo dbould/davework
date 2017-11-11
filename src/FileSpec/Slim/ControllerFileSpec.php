@@ -10,13 +10,14 @@ class ControllerFileSpec
 
     public function __construct($baseNamespace, $fileName, $baseFilePath)
     {
-        $this->namespace = $baseNamespace . 'Controller\\' . $fileName . 'Controller';
+        $this->namespace = $baseNamespace . '\Controller\\' . $fileName . 'Controller';
         $this->fileName = $fileName;
         $this->filePath = $baseFilePath . '\Controller\\' . $fileName . 'Controller';
 
         $this->associatedFiles = [
-
-            FactoryFunctionalTestFileSpecFileSpec::class
+            ControllerFunctionalTestFileSpec::class,
+            FactoryFileSpec::class,
+            FactoryFunctionalTestFileSpecFileSpec::class,
         ];
     }
 

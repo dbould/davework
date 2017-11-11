@@ -10,9 +10,9 @@ class FactoryFileSpec
 
     public function __construct($baseNamespace, $fileName, $baseFilePath)
     {
-        $this->namespace = $baseNamespace . 'Factory\\' . $fileName . 'Factory';
+        $this->namespace = $baseNamespace . '\Factory\\' . $fileName . 'Factory';
         $this->fileName = $fileName;
-        $this->filePath = $baseFilePath . '\Factory\\' . $fileName;
+        $this->filePath = $baseFilePath . '\Factory\\' . $fileName . 'Factory';
 
         $this->associatedFiles = [
             FactoryFunctionalTestFileSpecFileSpec::class

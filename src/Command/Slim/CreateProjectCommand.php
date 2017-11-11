@@ -23,7 +23,6 @@ class CreateProjectCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        var_dump($input->getOptions());die();
 
         $output->write('HELLO WORLD');
     }

@@ -8,11 +8,11 @@ class ControllerFileSpec
     private $filePath;
     private $associatedFiles;
 
-    public function __construct($baseNamespace, $fileName, $baseFilePath)
+    public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
-        $this->namespace = $baseNamespace . '\Controller\\' . $fileName . 'Controller';
+        $this->namespace = $topLevelNamespace . '\Controller';
         $this->fileName = $fileName;
-        $this->filePath = $baseFilePath . '\Controller\\' . $fileName . 'Controller';
+        $this->filePath = $baseFilePath . '\Controller\\' . $fileName . 'Controller.php';
 
         $this->associatedFiles = [
             ControllerFunctionalTestFileSpec::class,
@@ -24,5 +24,10 @@ class ControllerFileSpec
     public function getAssociatedFiles()
     {
         return $this->associatedFiles;
+    }
+
+    public function getFileContent($template)
+    {
+        return sprintf($template, $this->namespace, $this->fileName . 'Controller');
     }
 }

@@ -8,9 +8,9 @@ class ServiceFileSpec
     private $filePath;
     private $associatedFiles;
 
-    public function __construct($baseNamespace, $fileName, $baseFilePath)
+    public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
-        $this->namespace = $baseNamespace . '\Service\\' . $fileName . 'Service';
+        $this->namespace = $topLevelNamespace . '\Service';
         $this->fileName = $fileName;
         $this->filePath = $baseFilePath . '\Service\\' . $fileName . 'Service';
 
@@ -21,8 +21,11 @@ class ServiceFileSpec
         ];
     }
 
-    public function getAssociatedFiles()
+    public function getFileContent($template)
     {
-        return $this->associatedFiles;
+        return sprintf(
+            $template,
+            $this->namespace,
+            $this->fileName . 'Service');
     }
 }

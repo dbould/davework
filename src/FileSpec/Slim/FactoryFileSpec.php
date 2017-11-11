@@ -8,9 +8,9 @@ class FactoryFileSpec
     private $filePath;
     private $associatedFiles;
 
-    public function __construct($baseNamespace, $fileName, $baseFilePath)
+    public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
-        $this->namespace = $baseNamespace . '\Factory\\' . $fileName . 'Factory';
+        $this->namespace = $topLevelNamespace . '\Factory';
         $this->fileName = $fileName;
         $this->filePath = $baseFilePath . '\Factory\\' . $fileName . 'Factory';
 
@@ -22,5 +22,14 @@ class FactoryFileSpec
     public function getAssociatedFiles()
     {
         return $this->associatedFiles;
+    }
+
+    public function getFileContent($template)
+    {
+        return sprintf(
+            $template,
+            $this->namespace,
+            $this->fileName . 'Factory',
+            $this->fileName);
     }
 }

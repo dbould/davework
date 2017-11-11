@@ -9,7 +9,7 @@ class CreateFileServiceTest extends SlimTestCase
 {
     public function testItCreatesFactoryFile()
     {
-        $fileName = __DIR__ . '/../../TestFiles/Factory/TestFactory.php';
+        $fileName = __DIR__ . '/../../TestFiles/src/Factory/TestFactory.php';
 
         if (file_exists($fileName)) {
             unlink($fileName);

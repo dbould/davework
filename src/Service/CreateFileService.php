@@ -21,7 +21,7 @@ class CreateFileService implements CreateFileInterface
     public function create($fileName, $type)
     {
         if ($type == 'factory') {
-            $location = __DIR__ . '/../../tests/TestFiles/Factory/';
+            $location = __DIR__ . '/../../tests/TestFiles/src/Factory/';
             $filePath = $location . $fileName . 'Factory.php';
             $template = $this->templateService->getTemplate('Factory');
         }

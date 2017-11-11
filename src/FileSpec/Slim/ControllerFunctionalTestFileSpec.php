@@ -20,6 +20,6 @@ class ControllerFunctionalTestFileSpec
 
     public function getAssociatedFiles()
     {
-
+        return $this->associatedFiles;
     }
 }

@@ -23,6 +23,6 @@ class ControllerFileSpec
 
     public function getAssociatedFiles()
     {
-
+        return $this->associatedFiles;
     }
 }

@@ -3,11 +3,13 @@
 namespace Davework\Command\Slim;
 
 use Davework\Service\CreateFileService;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class CreateFileCommand
+class CreateFileCommand extends Command
 {
     private $createFileService;
 
@@ -17,6 +19,8 @@ class CreateFileCommand
      */
     public function __construct($createFileService)
     {
+        parent::__construct();
+
         $this->createFileService = $createFileService;
     }
 
@@ -25,17 +29,18 @@ class CreateFileCommand
         $this->setName('slim:create-file')
              ->setDescription('Creates a new file, and corresponding factory and test files')
              ->setHelp('slim:create-file [file name] [type]')
-             ->setDefinition([
-                 new InputOption('file-name', 'f', InputOption::VALUE_REQUIRED),
-                 new InputOption('type', 't', InputOption::VALUE_REQUIRED),
-             ]);
+             ->addArgument('file-name', InputArgument::REQUIRED, 'File name')
+             ->addArgument(
+                 'type',
+                 InputArgument::REQUIRED,
+                 'File type to create: controller | service');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->createFileService->create(
-            $input->getOption('file-name'),
-            $input->getOption('type')
+            $input->getArgument('file-name'),
+            $input->getArgument('type')
         );
 
         $output->write('File created');

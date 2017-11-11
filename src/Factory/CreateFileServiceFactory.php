@@ -3,16 +3,16 @@
 namespace Davework\Factory;
 
 use Davework\Service\CreateFileService;
+use Davework\Service\TemplateService;
+use Psr\Container\ContainerInterface;
 
-class CreateFileServiceFactory
+class CreateFileServiceFactory implements FactoryInterface
 {
-    public function __invoke()
+    public function __invoke(ContainerInterface $container)
     {
-        $template = require __DIR__ . '/../PhpTemplates/Factory.php';
+        $templateService = $container->get(TemplateService::class);
         $namespace = 'Davework\Factory';
-        $type = 'factory';
-        $fileName = 'Test';
 
-        return new CreateFileService($template, $namespace, $type, $fileName);
+        return new CreateFileService($templateService, $namespace);
     }
 }

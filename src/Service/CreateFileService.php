@@ -4,29 +4,30 @@ namespace Davework\Service;
 
 class CreateFileService implements CreateFileInterface
 {
-    private $template;
+    private $templateService;
     private $namespace;
-    private $type;
-    private $fileName;
 
-    public function __construct($template, $namespace, $type, $fileName)
+    /**
+     * CreateFileService constructor.
+     * @param TemplateService $templateService
+     * @param $namespace
+     */
+    public function __construct($templateService, $namespace)
     {
-        $this->template = $template;
+        $this->templateService = $templateService;
         $this->namespace = $namespace;
-        $this->type = $type;
-        $this->fileName = $fileName;
     }
 
-    public function create()
+    public function create($fileName, $type)
     {
-        if ($this->type == 'factory') {
+        if ($type == 'factory') {
             $location = __DIR__ . '/../../tests/TestFiles/Factory/';
-            $fileName = $location . $this->fileName . 'Factory.php';
+            $filePath = $location . $fileName . 'Factory.php';
+            $template = $this->templateService->getTemplate('Factory');
         }
 
+        $handler = fopen($filePath, 'x+');
 
-        $handler = fopen($fileName, 'x+');
-
-        fwrite($handler, sprintf($this->template, $this->namespace, $this->fileName . 'Factory', $this->fileName));
+        fwrite($handler, sprintf($template, $this->namespace, $fileName . 'Factory', $fileName));
     }
 }

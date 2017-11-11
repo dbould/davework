@@ -3,5 +3,5 @@ namespace Davework\Service;
 
 interface CreateFileInterface
 {
-    public function create();
+    public function create($fileName, $type);
 }

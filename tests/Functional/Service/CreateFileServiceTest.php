@@ -7,12 +7,16 @@ use Tests\SlimTestCase;
 
 class CreateFileServiceTest extends SlimTestCase
 {
-    public function testItCreatesFactory()
+    public function testItCreatesFactoryFile()
     {
         $fileName = __DIR__ . '/../../TestFiles/Factory/TestFactory.php';
-        unlink($fileName);
+
+        if (file_exists($fileName)) {
+            unlink($fileName);
+        }
+
         $service = $this->getContainer()->get(CreateFileService::class);
-        $service->create();
+        $service->create('Test', 'factory');
 
         $expected = <<<TESTFACTORY
 <?php

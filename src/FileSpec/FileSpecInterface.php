@@ -2,7 +2,8 @@
 
 namespace Davework\FileSpec;
 
-class FileSpecInterface
+interface FileSpecInterface
 {
 
+    public function getAssociatedFiles();
 }

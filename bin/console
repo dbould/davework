@@ -2,12 +2,16 @@
 <?php
 require __DIR__.'/../vendor/autoload.php';
 
-use Davework\Command\CreateSlimProjectCommand;
+use Davework\Command\Slim\CreateFileCommand;
+use Davework\Command\Slim\CreateProjectCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
 
+$container = $app->getContainer();
+
 //Commands
-$application->add(new CreateSlimProjectCommand());
+$application->add(new CreateProjectCommand());
+$application->add(new CreateFileCommand());
 
 $application->run();

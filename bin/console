@@ -1,9 +1,10 @@
 #!/usr/bin/env php
 <?php
-require __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/../src/bootstrap.php';
 
 use Davework\Command\Slim\CreateFileCommand;
 use Davework\Command\Slim\CreateProjectCommand;
+use Davework\Service\CreateFileService;
 use Symfony\Component\Console\Application;
 
 $application = new Application();
@@ -12,6 +13,6 @@ $container = $app->getContainer();
 
 //Commands
 $application->add(new CreateProjectCommand());
-$application->add(new CreateFileCommand());
+$application->add(new CreateFileCommand($container->get(CreateFileService::class)));
 
 $application->run();

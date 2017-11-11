@@ -7,57 +7,6 @@ use Tests\SlimTestCase;
 
 class TemplateServiceTest extends SlimTestCase
 {
-    public function testGetFactoryTemplate()
-    {
-        $service = $this->getContainer()->get(TemplateService::class);
-
-        $expected = <<<TESTFACTORY
-<?php
-namespace %s;
-
-class %s
-{
-    public function __invoke()
-    {
-        return new %s();
-    }
-}
-
-TESTFACTORY;
-
-        $actual = $service->getTemplate('Factory');
-
-        $this->assertEquals($expected, $actual);
-    }
-
-    public function testGetFactoryFunctionalTestTemplate()
-    {
-        $service = $this->getContainer()->get(TemplateService::class);
-
-        $expected = <<<'FACTORYTEST'
-<?php
-namespace %s;
-
-use %s;
-use Tests\SlimTestCase;
-
-class %s extends SlimTestCase
-{
-    public function testItReturnsAnInstance()
-    {
-        $actual = $this->getContainer()->get(%s::class);
-
-        $this->assertInstanceOf(%s::class, $actual);
-    }
-}
-
-FACTORYTEST;
-
-        $actual = $service->getTemplate('FactoryFunctionalTest');
-
-        $this->assertEquals($expected, $actual);
-    }
-
     public function testGetControllerTemplate()
     {
         $service = $this->getContainer()->get(TemplateService::class);
@@ -112,6 +61,57 @@ CONTROLLERTEST;
         $this->assertEquals($expected, $actual);
     }
 
+    public function testGetFactoryTemplate()
+    {
+        $service = $this->getContainer()->get(TemplateService::class);
+
+        $expected = <<<TESTFACTORY
+<?php
+namespace %s;
+
+class %s
+{
+    public function __invoke()
+    {
+        return new %s();
+    }
+}
+
+TESTFACTORY;
+
+        $actual = $service->getTemplate('Factory');
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testGetFactoryFunctionalTestTemplate()
+    {
+        $service = $this->getContainer()->get(TemplateService::class);
+
+        $expected = <<<'FACTORYTEST'
+<?php
+namespace %s;
+
+use %s;
+use Tests\SlimTestCase;
+
+class %sTest extends SlimTestCase
+{
+    public function testItReturnsAnInstance()
+    {
+        $actual = $this->getContainer()->get(%s::class);
+
+        $this->assertInstanceOf(%s::class, $actual);
+    }
+}
+
+FACTORYTEST;
+
+        $actual = $service->getTemplate('FactoryFunctionalTest');
+
+        $this->assertEquals($expected, $actual);
+    }
+
     public function testGetServiceTemplate()
     {
         $service = $this->getContainer()->get(TemplateService::class);
@@ -146,7 +146,7 @@ namespace %s;
 use %s;
 use Tests\SlimTestCase;
 
-class %s extends SlimTestCase
+class %sTest extends SlimTestCase
 {
     public function test()
     {

@@ -2,6 +2,8 @@
 
 namespace Davework\Service;
 
+use Davework\FileSpec\Slim\ControllerFileSpec;
+
 class CreateFileService implements CreateFileInterface
 {
     private $templateService;
@@ -24,8 +26,13 @@ class CreateFileService implements CreateFileInterface
             $location = __DIR__ . '/../../tests/TestFiles/src/Controller/';
             $filePath = $location . $fileName . 'Controller.php';
             $template = $this->templateService->getTemplate('Controller');
-            $namespace = $this->topLevelNamespace . '\Controller';
-            $content = sprintf($template, $namespace, $fileName . 'Controller');
+
+            $controllerFileSpec = new ControllerFileSpec(
+                $this->topLevelNamespace,
+                $fileName,
+                $location);
+            
+            $content = $controllerFileSpec->getFileContent($template);
         }
 
         if ($type == 'ControllerFunctionalTest') {

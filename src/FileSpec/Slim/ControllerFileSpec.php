@@ -28,6 +28,9 @@ class ControllerFileSpec
 
     public function getFileContent($template)
     {
-        return sprintf($template, $this->namespace, $this->fileName . 'Controller');
+        return sprintf(
+            $template,
+            $this->namespace,
+            $this->fileName . 'Controller');
     }
 }

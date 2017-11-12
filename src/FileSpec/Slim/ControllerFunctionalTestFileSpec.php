@@ -10,9 +10,9 @@ class ControllerFunctionalTestFileSpec
 
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
-        $this->namespace = $topLevelNamespace . '\Controller';
-        $this->fileName = $fileName;
-        $this->filePath = $baseFilePath . '\Controller\\' . $fileName . 'ControllerTest';
+        $this->namespace = $topLevelNamespace;
+        $this->fileName = $fileName . 'Controller';
+        $this->filePath = $baseFilePath . 'ControllerTest';
 
         $this->associatedFiles = [
         ];
@@ -28,6 +28,6 @@ class ControllerFunctionalTestFileSpec
         return sprintf(
             $template,
             $this->namespace,
-            $this->fileName . 'Controller');
+            $this->fileName);
     }
 }

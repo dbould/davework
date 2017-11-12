@@ -3,6 +3,7 @@
 namespace Davework\Service;
 
 use Davework\FileSpec\Slim\ControllerFileSpec;
+use Davework\FileSpec\Slim\ControllerFunctionalTestFileSpec;
 
 class CreateFileService implements CreateFileInterface
 {
@@ -27,12 +28,12 @@ class CreateFileService implements CreateFileInterface
             $filePath = $location . $fileName . 'Controller.php';
             $template = $this->templateService->getTemplate('Controller');
 
-            $controllerFileSpec = new ControllerFileSpec(
+            $fileSpec = new ControllerFileSpec(
                 $this->topLevelNamespace,
                 $fileName,
                 $location);
-            
-            $content = $controllerFileSpec->getFileContent($template);
+
+            $content = $fileSpec->getFileContent($template);
         }
 
         if ($type == 'ControllerFunctionalTest') {
@@ -40,10 +41,13 @@ class CreateFileService implements CreateFileInterface
             $filePath = $location . $fileName . 'ControllerTest.php';
             $template = $this->templateService->getTemplate('ControllerFunctionalTest');
             $namespace = 'Tests\Functional\Controller';
-            $content = sprintf(
-                $template,
+
+            $fileSpec = new ControllerFunctionalTestFileSpec(
                 $namespace,
-                $fileName . 'Controller');
+                $fileName,
+                $location);
+
+            $content = $fileSpec->getFileContent($template);
         }
 
         if ($type == 'Factory') {

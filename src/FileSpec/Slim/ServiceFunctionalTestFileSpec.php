@@ -8,9 +8,9 @@ class ServiceFunctionalTestFileSpec
     private $filePath;
     private $associatedFiles;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath)
+    public function __construct($namespace, $fileName, $baseFilePath)
     {
-        $this->namespace = $topLevelNamespace . '\Service';
+        $this->namespace = $namespace;
         $this->fileName = $fileName;
         $this->filePath = $baseFilePath . '\Service\\' . $fileName . 'ServiceTest';
 
@@ -26,7 +26,7 @@ class ServiceFunctionalTestFileSpec
 
     public function getFileContent($template)
     {
-        $classToTest = $this->topLevelNamespace . '\Service\\' . $this->fileName . 'Service';
+        $classToTest = 'Davework\Service\\' . $this->fileName . 'Service';
 
         return sprintf(
             $template,

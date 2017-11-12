@@ -8,9 +8,9 @@ class FactoryFunctionalTestFileSpec
     private $filePath;
     private $associatedFiles;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath)
+    public function __construct($namespace, $fileName, $baseFilePath)
     {
-        $this->namespace = $topLevelNamespace . '\Factory';
+        $this->namespace = $namespace;
         $this->fileName = $fileName;
         $this->filePath = $baseFilePath . '\Factory\\' . $fileName . 'FactoryTest';
 
@@ -26,7 +26,7 @@ class FactoryFunctionalTestFileSpec
 
     public function getFileContent($template)
     {
-        $classToTest = $this->topLevelNamespace . '\Factory\\' . $this->fileName . 'Factory';
+        $classToTest = 'Davework\Factory\\' . $this->fileName . 'Factory';
 
         return sprintf(
             $template,

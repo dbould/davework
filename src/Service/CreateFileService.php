@@ -7,6 +7,7 @@ use Davework\FileSpec\Slim\ControllerFunctionalTestFileSpec;
 use Davework\FileSpec\Slim\FactoryFileSpec;
 use Davework\FileSpec\Slim\FactoryFunctionalTestFileSpec;
 use Davework\FileSpec\Slim\ServiceFileSpec;
+use Davework\FileSpec\Slim\ServiceFunctionalTestFileSpec;
 
 class CreateFileService implements CreateFileInterface
 {
@@ -16,7 +17,7 @@ class CreateFileService implements CreateFileInterface
     /**
      * CreateFileService constructor.
      * @param TemplateService $templateService
-     * @param $namespace
+     * @param $topLevelNamespace
      */
     public function __construct($templateService, $topLevelNamespace)
     {
@@ -81,6 +82,14 @@ class CreateFileService implements CreateFileInterface
                 $classToTest,
                 $classToTest
             );
+
+            $fileSpec = new FactoryFunctionalTestFileSpec(
+                $namespace,
+                $fileName,
+                $location
+            );
+
+            $content = $fileSpec->getFileContent($template);
         }
 
         if ($type == 'Service') {
@@ -103,12 +112,14 @@ class CreateFileService implements CreateFileInterface
             $template = $this->templateService->getTemplate('ServiceFunctionalTest');
             $namespace = 'Tests\Functional\Service';
             $classToTest = $this->topLevelNamespace . '\Service\\' . $fileName . 'Service';
-            $content = sprintf(
-                $template,
+
+            $fileSpec = new ServiceFunctionalTestFileSpec(
                 $namespace,
-                $classToTest,
-                $fileName . 'Service',
-                $fileName);
+                $fileName,
+                $location
+            );
+
+            $content = $fileSpec->getFileContent($template);
         }
 
         $handler = fopen($filePath, 'x+');

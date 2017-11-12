@@ -4,6 +4,9 @@ namespace Davework\Service;
 
 use Davework\FileSpec\Slim\ControllerFileSpec;
 use Davework\FileSpec\Slim\ControllerFunctionalTestFileSpec;
+use Davework\FileSpec\Slim\FactoryFileSpec;
+use Davework\FileSpec\Slim\FactoryFunctionalTestFileSpec;
+use Davework\FileSpec\Slim\ServiceFileSpec;
 
 class CreateFileService implements CreateFileInterface
 {
@@ -54,12 +57,14 @@ class CreateFileService implements CreateFileInterface
             $location = __DIR__ . '/../../tests/TestFiles/src/Factory/';
             $filePath = $location . $fileName . 'Factory.php';
             $template = $this->templateService->getTemplate('Factory');
-            $namespace = $this->topLevelNamespace . '\Factory';
-            $content = sprintf(
-                $template,
-                $namespace,
-                $fileName . 'Factory',
-                $fileName);
+
+            $fileSpec = new FactoryFileSpec(
+                $this->topLevelNamespace,
+                $fileName,
+                $location
+            );
+
+            $content = $fileSpec->getFileContent($template);
         }
 
         if ($type == 'FactoryFunctionalTest') {
@@ -82,11 +87,14 @@ class CreateFileService implements CreateFileInterface
             $location = __DIR__ . '/../../tests/TestFiles/src/Service/';
             $filePath = $location . $fileName . 'Service.php';
             $template = $this->templateService->getTemplate('Service');
-            $namespace = $this->topLevelNamespace . '\Service';
-            $content = sprintf(
-                $template,
-                $namespace,
-                $fileName . 'Service');
+
+            $fileSpec = new ServiceFileSpec(
+                $this->topLevelNamespace,
+                $fileName,
+                $location
+            );
+
+            $content = $fileSpec->getFileContent($template);
         }
 
         if ($type == 'ServiceFunctionalTest') {

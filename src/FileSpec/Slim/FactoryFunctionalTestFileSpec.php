@@ -1,7 +1,7 @@
 <?php
 namespace Davework\FileSpec\Slim;
 
-class FactoryFunctionalTestFileSpecFileSpec
+class FactoryFunctionalTestFileSpec
 {
     private $namespace;
     private $fileName;

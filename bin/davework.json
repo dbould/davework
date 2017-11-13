@@ -1,0 +1,6 @@
+{
+    "topLevelNamespace":"Davework",
+    "sourceDirectory":"src/",
+    "testNamespace":"Tests",
+    "testsDirectory":"tests/"
+}

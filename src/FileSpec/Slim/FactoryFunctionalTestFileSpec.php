@@ -3,14 +3,14 @@ namespace Davework\FileSpec\Slim;
 
 class FactoryFunctionalTestFileSpec
 {
-    private $namespace;
+    private $topLevelNamespace;
     private $fileName;
     private $filePath;
     private $associatedFiles;
 
-    public function __construct($namespace, $fileName, $baseFilePath)
+    public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
-        $this->namespace = $namespace;
+        $this->topLevelNamespace = $topLevelNamespace;
         $this->fileName = $fileName;
         $this->filePath = $baseFilePath . '\Factory\\' . $fileName . 'FactoryTest';
 
@@ -30,7 +30,7 @@ class FactoryFunctionalTestFileSpec
 
         return sprintf(
             $template,
-            $this->namespace,
+            $this->topLevelNamespace,
             $classToTest,
             $this->fileName . 'Factory',
             $classToTest,

@@ -3,14 +3,14 @@ namespace Davework\FileSpec\Slim;
 
 class ControllerFunctionalTestFileSpec
 {
-    private $namespace;
+    private $topLevelNamespace;
     private $fileName;
     private $filePath;
     private $associatedFiles;
 
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
-        $this->namespace = $topLevelNamespace;
+        $this->topLevelNamespace = $topLevelNamespace;
         $this->fileName = $fileName . 'Controller';
         $this->filePath = $baseFilePath . 'ControllerTest';
 
@@ -27,7 +27,7 @@ class ControllerFunctionalTestFileSpec
     {
         return sprintf(
             $template,
-            $this->namespace,
+            $this->topLevelNamespace,
             $this->fileName);
     }
 }

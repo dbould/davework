@@ -11,9 +11,6 @@ $application = new Application();
 
 $container = $app->getContainer();
 
-$configJson = file_get_contents(__DIR__ . '/davework.json');
-$config = json_decode($configJson);
-
 //Commands
 $application->add(new CreateProjectCommand());
 $application->add(new CreateFileCommand($container->get(CreateFileService::class)));

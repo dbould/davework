@@ -13,16 +13,18 @@ class CreateFileService implements CreateFileInterface
 {
     private $templateService;
     private $topLevelNamespace;
+    private $topLevelTestNamespace;
 
     /**
      * CreateFileService constructor.
      * @param TemplateService $templateService
      * @param $topLevelNamespace
      */
-    public function __construct($templateService, $topLevelNamespace)
+    public function __construct($templateService, $topLevelNamespace, $topLevelTestNamespace)
     {
         $this->templateService = $templateService;
         $this->topLevelNamespace = $topLevelNamespace;
+        $this->topLevelTestNamespace = $topLevelTestNamespace;
     }
 
     public function create($fileName, $type)

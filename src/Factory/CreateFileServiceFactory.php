@@ -11,7 +11,7 @@ class CreateFileServiceFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container)
     {
         $templateService = $container->get(TemplateService::class);
-        $topLevelNamespace = 'Davework';
+        $topLevelNamespace = $container->get('config')->topLevelNamespace;
 
         return new CreateFileService($templateService, $topLevelNamespace);
     }

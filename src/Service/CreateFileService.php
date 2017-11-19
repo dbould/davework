@@ -46,10 +46,9 @@ class CreateFileService implements CreateFileInterface
             $location = __DIR__ . '/../../tests/TestFiles/tests/Controller/';
             $filePath = $location . $fileName . 'ControllerTest.php';
             $template = $this->templateService->getTemplate('ControllerFunctionalTest');
-            $namespace = 'Tests\Functional\Controller';
 
             $fileSpec = new ControllerFunctionalTestFileSpec(
-                $namespace,
+                $this->topLevelTestNamespace,
                 $fileName,
                 $location);
 
@@ -74,10 +73,9 @@ class CreateFileService implements CreateFileInterface
             $location = __DIR__ . '/../../tests/TestFiles/tests/Factory/';
             $filePath = $location . $fileName . 'FactoryTest.php';
             $template = $this->templateService->getTemplate('FactoryFunctionalTest');
-            $namespace = 'Tests\Functional\Factory';
 
             $fileSpec = new FactoryFunctionalTestFileSpec(
-                $namespace,
+                $this->topLevelTestNamespace,
                 $fileName,
                 $location
             );
@@ -103,10 +101,9 @@ class CreateFileService implements CreateFileInterface
             $location = __DIR__ . '/../../tests/TestFiles/tests/Service/';
             $filePath = $location . $fileName . 'ServiceTest.php';
             $template = $this->templateService->getTemplate('ServiceFunctionalTest');
-            $namespace = 'Tests\Functional\Service';
 
             $fileSpec = new ServiceFunctionalTestFileSpec(
-                $namespace,
+                $this->topLevelTestNamespace,
                 $fileName,
                 $location
             );

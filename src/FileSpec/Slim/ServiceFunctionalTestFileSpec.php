@@ -10,7 +10,7 @@ class ServiceFunctionalTestFileSpec
 
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
-        $this->topLevelNamespace = $topLevelNamespace;
+        $this->topLevelNamespace = $topLevelNamespace . '\Functional\Service';
         $this->fileName = $fileName;
         $this->filePath = $baseFilePath . '\Service\\' . $fileName . 'ServiceTest';
 

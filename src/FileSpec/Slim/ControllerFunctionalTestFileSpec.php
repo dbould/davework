@@ -10,7 +10,7 @@ class ControllerFunctionalTestFileSpec
 
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
-        $this->topLevelNamespace = $topLevelNamespace;
+        $this->topLevelNamespace = $topLevelNamespace . '\Functional\Controller';
         $this->fileName = $fileName . 'Controller';
         $this->filePath = $baseFilePath . 'ControllerTest';
 

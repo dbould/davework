@@ -10,7 +10,7 @@ class FactoryFunctionalTestFileSpec
 
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
-        $this->topLevelNamespace = $topLevelNamespace;
+        $this->topLevelNamespace = $topLevelNamespace . '\Functional\Factory';
         $this->fileName = $fileName;
         $this->filePath = $baseFilePath . '\Factory\\' . $fileName . 'FactoryTest';
 

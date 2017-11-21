@@ -52,7 +52,8 @@ class CreateFileService implements CreateFileInterface
             $fileSpec = new ControllerFunctionalTestFileSpec(
                 $this->topLevelTestNamespace,
                 $fileName,
-                $this->rootDirectory);
+                $this->rootDirectory
+            );
 
             $filePath = $fileSpec->getFilePath();
             $content = $fileSpec->getFileContent($template);
@@ -72,8 +73,6 @@ class CreateFileService implements CreateFileInterface
         }
 
         if ($type == 'FactoryFunctionalTest') {
-            $location = $this->rootDirectory . '/tests/Factory/';
-            $filePath = $location . $fileName . 'FactoryTest.php';
             $template = $this->templateService->getTemplate('FactoryFunctionalTest');
 
             $fileSpec = new FactoryFunctionalTestFileSpec(
@@ -87,8 +86,6 @@ class CreateFileService implements CreateFileInterface
         }
 
         if ($type == 'Service') {
-            $location = $this->rootDirectory . '/src/Service/';
-            $filePath = $location . $fileName . 'Service.php';
             $template = $this->templateService->getTemplate('Service');
 
             $fileSpec = new ServiceFileSpec(
@@ -102,8 +99,6 @@ class CreateFileService implements CreateFileInterface
         }
 
         if ($type == 'ServiceFunctionalTest') {
-            $location = $this->rootDirectory . '/tests/Service/';
-            $filePath = $location . $fileName . 'ServiceTest.php';
             $template = $this->templateService->getTemplate('ServiceFunctionalTest');
 
             $fileSpec = new ServiceFunctionalTestFileSpec(

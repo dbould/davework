@@ -14,9 +14,7 @@ class ServiceFunctionalTestFileSpec
         $this->fileName = $fileName;
         $this->filePath = $baseFilePath . '/tests/Service/' . $fileName . 'ServiceTest.php';
 
-        $this->associatedFiles = [
-
-        ];
+        $this->associatedFiles = [];
     }
 
     public function getAssociatedFiles()

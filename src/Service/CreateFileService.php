@@ -33,9 +33,9 @@ class CreateFileService implements CreateFileInterface
 
     public function create($fileName, $type)
     {
-        if ($type == 'Controller') {
-            $template = $this->templateService->getTemplate('Controller');
+        $template = $this->templateService->getTemplate($type);
 
+        if ($type == 'Controller') {
             $fileSpec = new ControllerFileSpec(
                 $this->topLevelNamespace,
                 $fileName,
@@ -44,8 +44,6 @@ class CreateFileService implements CreateFileInterface
         }
 
         if ($type == 'ControllerFunctionalTest') {
-            $template = $this->templateService->getTemplate('ControllerFunctionalTest');
-
             $fileSpec = new ControllerFunctionalTestFileSpec(
                 $this->topLevelTestNamespace,
                 $fileName,
@@ -54,8 +52,6 @@ class CreateFileService implements CreateFileInterface
         }
 
         if ($type == 'Factory') {
-            $template = $this->templateService->getTemplate('Factory');
-
             $fileSpec = new FactoryFileSpec(
                 $this->topLevelNamespace,
                 $fileName,
@@ -64,8 +60,6 @@ class CreateFileService implements CreateFileInterface
         }
 
         if ($type == 'FactoryFunctionalTest') {
-            $template = $this->templateService->getTemplate('FactoryFunctionalTest');
-
             $fileSpec = new FactoryFunctionalTestFileSpec(
                 $this->topLevelTestNamespace,
                 $fileName,
@@ -74,8 +68,6 @@ class CreateFileService implements CreateFileInterface
         }
 
         if ($type == 'Service') {
-            $template = $this->templateService->getTemplate('Service');
-
             $fileSpec = new ServiceFileSpec(
                 $this->topLevelNamespace,
                 $fileName,
@@ -84,8 +76,6 @@ class CreateFileService implements CreateFileInterface
         }
 
         if ($type == 'ServiceFunctionalTest') {
-            $template = $this->templateService->getTemplate('ServiceFunctionalTest');
-
             $fileSpec = new ServiceFunctionalTestFileSpec(
                 $this->topLevelTestNamespace,
                 $fileName,

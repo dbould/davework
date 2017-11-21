@@ -13,7 +13,8 @@ class CreateFileServiceFactory implements FactoryInterface
         $templateService = $container->get(TemplateService::class);
         $topLevelNamespace = $container->get('config')->topLevelNamespace;
         $topLevelTestNamespace = $container->get('config')->testNamespace;
+        $rootDirectory = $container->get('config')->rootDirectory;
 
-        return new CreateFileService($templateService, $topLevelNamespace, $topLevelTestNamespace);
+        return new CreateFileService($templateService, $topLevelNamespace, $topLevelTestNamespace, $rootDirectory);
     }
 }

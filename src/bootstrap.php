@@ -17,5 +17,6 @@ require __DIR__ . '/../src/routes.php';
 // Register Config
 $configJson = file_get_contents(__DIR__ . '/../davework.json');
 $config = json_decode($configJson);
+$config->sourceDirectory = __DIR__ . '/../' . $config->sourceDirectory;
 
 $container['config'] = $config;

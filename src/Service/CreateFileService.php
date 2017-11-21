@@ -35,53 +35,19 @@ class CreateFileService implements CreateFileInterface
     {
         $template = $this->templateService->getTemplate($type);
 
-        if ($type == 'Controller') {
-            $fileSpec = new ControllerFileSpec(
-                $this->topLevelNamespace,
-                $fileName,
-                $this->rootDirectory
-            );
+        $className = 'Davework\FileSpec\Slim\\' . $type . 'FileSpec';
+
+        if (substr($type, -4) === 'Test') {
+            $topLevelNamespace = $this->topLevelTestNamespace;
+        } else {
+            $topLevelNamespace = $this->topLevelNamespace;
         }
 
-        if ($type == 'ControllerFunctionalTest') {
-            $fileSpec = new ControllerFunctionalTestFileSpec(
-                $this->topLevelTestNamespace,
-                $fileName,
-                $this->rootDirectory
-            );
-        }
-
-        if ($type == 'Factory') {
-            $fileSpec = new FactoryFileSpec(
-                $this->topLevelNamespace,
-                $fileName,
-                $this->rootDirectory
-            );
-        }
-
-        if ($type == 'FactoryFunctionalTest') {
-            $fileSpec = new FactoryFunctionalTestFileSpec(
-                $this->topLevelTestNamespace,
-                $fileName,
-                $this->rootDirectory
-            );
-        }
-
-        if ($type == 'Service') {
-            $fileSpec = new ServiceFileSpec(
-                $this->topLevelNamespace,
-                $fileName,
-                $this->rootDirectory
-            );
-        }
-
-        if ($type == 'ServiceFunctionalTest') {
-            $fileSpec = new ServiceFunctionalTestFileSpec(
-                $this->topLevelTestNamespace,
-                $fileName,
-                $this->rootDirectory
-            );
-        }
+        $fileSpec = new $className(
+            $topLevelNamespace,
+            $fileName,
+            $this->rootDirectory
+        );
 
         $filePath = $fileSpec->getFilePath();
         $content = $fileSpec->getFileContent($template);

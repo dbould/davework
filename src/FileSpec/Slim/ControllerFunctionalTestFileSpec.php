@@ -12,10 +12,9 @@ class ControllerFunctionalTestFileSpec
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Controller';
         $this->fileName = $fileName . 'Controller';
-        $this->filePath = $baseFilePath . 'ControllerTest';
+        $this->filePath = $baseFilePath . '/tests/Controller/' . $fileName . 'ControllerTest.php';
 
-        $this->associatedFiles = [
-        ];
+        $this->associatedFiles = [];
     }
 
     public function getAssociatedFiles()
@@ -29,5 +28,10 @@ class ControllerFunctionalTestFileSpec
             $template,
             $this->topLevelNamespace,
             $this->fileName);
+    }
+
+    public function getFilePath()
+    {
+        return $this->filePath;
     }
 }

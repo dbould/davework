@@ -12,7 +12,7 @@ class ServiceFunctionalTestFileSpec
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Service';
         $this->fileName = $fileName;
-        $this->filePath = $baseFilePath . '\Service\\' . $fileName . 'ServiceTest';
+        $this->filePath = $baseFilePath . '/Service/' . $fileName . 'ServiceTest';
 
         $this->associatedFiles = [
 

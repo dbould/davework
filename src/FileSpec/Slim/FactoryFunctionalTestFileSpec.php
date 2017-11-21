@@ -12,11 +12,9 @@ class FactoryFunctionalTestFileSpec
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Factory';
         $this->fileName = $fileName;
-        $this->filePath = $baseFilePath . '\Factory\\' . $fileName . 'FactoryTest';
+        $this->filePath = $baseFilePath . '/Factory/' . $fileName . 'FactoryTest';
 
-        $this->associatedFiles = [
-
-        ];
+        $this->associatedFiles = [];
     }
 
     public function getAssociatedFiles()

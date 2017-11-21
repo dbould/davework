@@ -34,28 +34,27 @@ class CreateFileService implements CreateFileInterface
     public function create($fileName, $type)
     {
         if ($type == 'Controller') {
-            $location = $this->rootDirectory . '/src/Controller/';
-            $filePath = $location . $fileName . 'Controller.php';
             $template = $this->templateService->getTemplate('Controller');
 
             $fileSpec = new ControllerFileSpec(
                 $this->topLevelNamespace,
                 $fileName,
-                $location);
+                $this->rootDirectory
+            );
 
+            $filePath = $fileSpec->getFilePath();
             $content = $fileSpec->getFileContent($template);
         }
 
         if ($type == 'ControllerFunctionalTest') {
-            $location = $this->rootDirectory . '/tests/Controller/';
-            $filePath = $location . $fileName . 'ControllerTest.php';
             $template = $this->templateService->getTemplate('ControllerFunctionalTest');
 
             $fileSpec = new ControllerFunctionalTestFileSpec(
                 $this->topLevelTestNamespace,
                 $fileName,
-                $location);
+                $this->rootDirectory);
 
+            $filePath = $fileSpec->getFilePath();
             $content = $fileSpec->getFileContent($template);
         }
 

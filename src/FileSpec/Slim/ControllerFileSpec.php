@@ -12,7 +12,7 @@ class ControllerFileSpec
     {
         $this->namespace = $topLevelNamespace . '\Controller';
         $this->fileName = $fileName;
-        $this->filePath = $baseFilePath . '\Controller\\' . $fileName . 'Controller.php';
+        $this->filePath = $baseFilePath . '/src/Controller/' . $fileName . 'Controller.php';
 
         $this->associatedFiles = [
             ControllerFunctionalTestFileSpec::class,
@@ -32,5 +32,10 @@ class ControllerFileSpec
             $template,
             $this->namespace,
             $this->fileName . 'Controller');
+    }
+
+    public function getFilePath()
+    {
+        return $this->filePath;
     }
 }

@@ -12,7 +12,7 @@ class FactoryFileSpec
     {
         $this->namespace = $topLevelNamespace . '\Factory';
         $this->fileName = $fileName;
-        $this->filePath = $baseFilePath . '\Factory\\' . $fileName . 'Factory';
+        $this->filePath = $baseFilePath . '/Factory/' . $fileName . 'Factory';
 
         $this->associatedFiles = [
             FactoryFunctionalTestFileSpecFileSpec::class

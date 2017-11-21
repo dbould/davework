@@ -41,9 +41,6 @@ class CreateFileService implements CreateFileInterface
                 $fileName,
                 $this->rootDirectory
             );
-
-            $filePath = $fileSpec->getFilePath();
-            $content = $fileSpec->getFileContent($template);
         }
 
         if ($type == 'ControllerFunctionalTest') {
@@ -54,9 +51,6 @@ class CreateFileService implements CreateFileInterface
                 $fileName,
                 $this->rootDirectory
             );
-
-            $filePath = $fileSpec->getFilePath();
-            $content = $fileSpec->getFileContent($template);
         }
 
         if ($type == 'Factory') {
@@ -67,9 +61,6 @@ class CreateFileService implements CreateFileInterface
                 $fileName,
                 $this->rootDirectory
             );
-
-            $filePath = $fileSpec->getFilePath();
-            $content = $fileSpec->getFileContent($template);
         }
 
         if ($type == 'FactoryFunctionalTest') {
@@ -80,9 +71,6 @@ class CreateFileService implements CreateFileInterface
                 $fileName,
                 $this->rootDirectory
             );
-
-            $filePath = $fileSpec->getFilePath();
-            $content = $fileSpec->getFileContent($template);
         }
 
         if ($type == 'Service') {
@@ -93,9 +81,6 @@ class CreateFileService implements CreateFileInterface
                 $fileName,
                 $this->rootDirectory
             );
-
-            $filePath = $fileSpec->getFilePath();
-            $content = $fileSpec->getFileContent($template);
         }
 
         if ($type == 'ServiceFunctionalTest') {
@@ -106,10 +91,10 @@ class CreateFileService implements CreateFileInterface
                 $fileName,
                 $this->rootDirectory
             );
-
-            $filePath = $fileSpec->getFilePath();
-            $content = $fileSpec->getFileContent($template);
         }
+
+        $filePath = $fileSpec->getFilePath();
+        $content = $fileSpec->getFileContent($template);
 
         $handler = fopen($filePath, 'x+');
 

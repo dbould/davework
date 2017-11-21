@@ -35,4 +35,9 @@ class ServiceFunctionalTestFileSpec
             $this->fileName . 'Service',
             $this->fileName);
     }
+
+    public function getFilePath()
+    {
+        return $this->filePath;
+    }
 }

@@ -35,4 +35,9 @@ class FactoryFunctionalTestFileSpec
             $classToTest
         );
     }
+
+    public function getFilePath()
+    {
+        return $this->filePath;
+    }
 }

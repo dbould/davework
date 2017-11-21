@@ -28,4 +28,9 @@ class ServiceFileSpec
             $this->namespace,
             $this->fileName . 'Service');
     }
+
+    public function getFilePath()
+    {
+        return $this->filePath;
+    }
 }

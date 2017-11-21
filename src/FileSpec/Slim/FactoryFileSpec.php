@@ -32,4 +32,9 @@ class FactoryFileSpec
             $this->fileName . 'Factory',
             $this->fileName);
     }
+
+    public function getFilePath()
+    {
+        return $this->filePath;
+    }
 }

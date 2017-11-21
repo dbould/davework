@@ -59,16 +59,15 @@ class CreateFileService implements CreateFileInterface
         }
 
         if ($type == 'Factory') {
-            $location = $this->rootDirectory . '/src/Factory/';
-            $filePath = $location . $fileName . 'Factory.php';
             $template = $this->templateService->getTemplate('Factory');
 
             $fileSpec = new FactoryFileSpec(
                 $this->topLevelNamespace,
                 $fileName,
-                $location
+                $this->rootDirectory
             );
 
+            $filePath = $fileSpec->getFilePath();
             $content = $fileSpec->getFileContent($template);
         }
 
@@ -80,9 +79,10 @@ class CreateFileService implements CreateFileInterface
             $fileSpec = new FactoryFunctionalTestFileSpec(
                 $this->topLevelTestNamespace,
                 $fileName,
-                $location
+                $this->rootDirectory
             );
 
+            $filePath = $fileSpec->getFilePath();
             $content = $fileSpec->getFileContent($template);
         }
 
@@ -94,9 +94,10 @@ class CreateFileService implements CreateFileInterface
             $fileSpec = new ServiceFileSpec(
                 $this->topLevelNamespace,
                 $fileName,
-                $location
+                $this->rootDirectory
             );
 
+            $filePath = $fileSpec->getFilePath();
             $content = $fileSpec->getFileContent($template);
         }
 
@@ -108,9 +109,10 @@ class CreateFileService implements CreateFileInterface
             $fileSpec = new ServiceFunctionalTestFileSpec(
                 $this->topLevelTestNamespace,
                 $fileName,
-                $location
+                $this->rootDirectory
             );
 
+            $filePath = $fileSpec->getFilePath();
             $content = $fileSpec->getFileContent($template);
         }
 

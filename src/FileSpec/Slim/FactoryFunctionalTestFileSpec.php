@@ -12,7 +12,7 @@ class FactoryFunctionalTestFileSpec
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Factory';
         $this->fileName = $fileName;
-        $this->filePath = $baseFilePath . '/Factory/' . $fileName . 'FactoryTest';
+        $this->filePath = $baseFilePath . '/tests/Factory/' . $fileName . 'FactoryTest.php';
 
         $this->associatedFiles = [];
     }

@@ -12,7 +12,7 @@ class ServiceFileSpec
     {
         $this->namespace = $topLevelNamespace . '\Service';
         $this->fileName = $fileName;
-        $this->filePath = $baseFilePath . '/Service/' . $fileName . 'Service';
+        $this->filePath = $baseFilePath . '/src/Service/' . $fileName . 'Service.php';
 
         $this->associatedFiles = [
             ServiceFunctionalTestFileSpec::class,

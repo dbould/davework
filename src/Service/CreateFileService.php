@@ -35,9 +35,9 @@ class CreateFileService implements CreateFileInterface
     {
         $template = $this->templateService->getTemplate($type);
 
-        $className = $this->getClassNameFromType();
+        $className = $this->getClassNameFromType($type);
 
-        $topLevelNamespace = $this->getTopLevelNamespace();
+        $topLevelNamespace = $this->getTopLevelNamespace($type);
 
         $fileSpec = new $className(
             $topLevelNamespace,

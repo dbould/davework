@@ -6,14 +6,14 @@ use Davework\FileSpec\FileSpecInterface;
 class ControllerFunctionalTestFileSpec implements FileSpecInterface
 {
     private $topLevelNamespace;
-    private $fileName;
+    private $className;
     private $filePath;
     private $associatedFiles;
 
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Controller';
-        $this->fileName = $fileName . 'Controller';
+        $this->className = $fileName . 'Controller';
         $this->filePath = $baseFilePath . '/tests/Controller/' . $fileName . 'ControllerTest.php';
 
         $this->associatedFiles = [];
@@ -29,7 +29,7 @@ class ControllerFunctionalTestFileSpec implements FileSpecInterface
         return sprintf(
             $template,
             $this->topLevelNamespace,
-            $this->fileName);
+            $this->className);
     }
 
     public function getFilePath()

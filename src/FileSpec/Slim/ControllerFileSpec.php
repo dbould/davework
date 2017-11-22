@@ -6,14 +6,14 @@ use Davework\FileSpec\FileSpecInterface;
 class ControllerFileSpec implements FileSpecInterface
 {
     private $namespace;
-    private $fileName;
+    private $className;
     private $filePath;
     private $associatedFiles;
 
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
         $this->namespace = $topLevelNamespace . '\Controller';
-        $this->fileName = $fileName;
+        $this->className = $fileName . 'Controller';
         $this->filePath = $baseFilePath . '/src/Controller/' . $fileName . 'Controller.php';
 
         $this->associatedFiles = [
@@ -33,7 +33,7 @@ class ControllerFileSpec implements FileSpecInterface
         return sprintf(
             $template,
             $this->namespace,
-            $this->fileName . 'Controller');
+            $this->className);
     }
 
     public function getFilePath()

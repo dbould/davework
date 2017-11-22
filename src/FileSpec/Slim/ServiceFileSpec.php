@@ -6,14 +6,14 @@ use Davework\FileSpec\FileSpecInterface;
 class ServiceFileSpec implements FileSpecInterface
 {
     private $namespace;
-    private $fileName;
+    private $className;
     private $filePath;
     private $associatedFiles;
 
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
         $this->namespace = $topLevelNamespace . '\Service';
-        $this->fileName = $fileName;
+        $this->className = $fileName . 'Service';
         $this->filePath = $baseFilePath . '/src/Service/' . $fileName . 'Service.php';
 
         $this->associatedFiles = [
@@ -28,7 +28,7 @@ class ServiceFileSpec implements FileSpecInterface
         return sprintf(
             $template,
             $this->namespace,
-            $this->fileName . 'Service');
+            $this->className);
     }
 
     public function getFilePath()

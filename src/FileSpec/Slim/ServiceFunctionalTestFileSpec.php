@@ -6,14 +6,14 @@ use Davework\FileSpec\FileSpecInterface;
 class ServiceFunctionalTestFileSpec implements FileSpecInterface
 {
     private $topLevelNamespace;
-    private $fileName;
+    private $className;
     private $filePath;
     private $associatedFiles;
 
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Service';
-        $this->fileName = $fileName;
+        $this->className = $fileName . 'Service';
         $this->filePath = $baseFilePath . '/tests/Service/' . $fileName . 'ServiceTest.php';
 
         $this->associatedFiles = [];
@@ -32,8 +32,7 @@ class ServiceFunctionalTestFileSpec implements FileSpecInterface
             $template,
             $this->topLevelNamespace,
             $classToTest,
-            $this->fileName . 'Service',
-            $this->fileName);
+            $this->className);
     }
 
     public function getFilePath()

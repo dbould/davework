@@ -7,13 +7,14 @@ class FactoryFileSpec implements FileSpecInterface
 {
     private $namespace;
     private $fileName;
-    private $filePath;
+    private $className;
     private $associatedFiles;
+    private $filePath;
 
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
         $this->namespace = $topLevelNamespace . '\Factory';
-        $this->fileName = $fileName;
+        $this->className = $fileName;
         $this->filePath = $baseFilePath . '/src/Factory/' . $fileName . 'Factory.php';
 
         $this->associatedFiles = [
@@ -31,7 +32,7 @@ class FactoryFileSpec implements FileSpecInterface
         return sprintf(
             $template,
             $this->namespace,
-            $this->fileName . 'Factory',
+            $this->className . 'Factory',
             $this->fileName);
     }
 

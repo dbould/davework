@@ -6,14 +6,14 @@ use Davework\FileSpec\FileSpecInterface;
 class FactoryFunctionalTestFileSpec implements FileSpecInterface
 {
     private $topLevelNamespace;
-    private $fileName;
+    private $className;
     private $filePath;
     private $associatedFiles;
 
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Factory';
-        $this->fileName = $fileName;
+        $this->className = $fileName;
         $this->filePath = $baseFilePath . '/tests/Factory/' . $fileName . 'FactoryTest.php';
 
         $this->associatedFiles = [];
@@ -32,7 +32,7 @@ class FactoryFunctionalTestFileSpec implements FileSpecInterface
             $template,
             $this->topLevelNamespace,
             $classToTest,
-            $this->fileName . 'Factory',
+            $this->className . 'Factory',
             $classToTest,
             $classToTest
         );

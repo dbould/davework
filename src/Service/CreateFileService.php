@@ -35,13 +35,9 @@ class CreateFileService implements CreateFileInterface
     {
         $template = $this->templateService->getTemplate($type);
 
-        $className = 'Davework\FileSpec\Slim\\' . $type . 'FileSpec';
+        $className = $this->getClassNameFromType();
 
-        if (substr($type, -4) === 'Test') {
-            $topLevelNamespace = $this->topLevelTestNamespace;
-        } else {
-            $topLevelNamespace = $this->topLevelNamespace;
-        }
+        $topLevelNamespace = $this->getTopLevelNamespace();
 
         $fileSpec = new $className(
             $topLevelNamespace,
@@ -52,8 +48,29 @@ class CreateFileService implements CreateFileInterface
         $filePath = $fileSpec->getFilePath();
         $content = $fileSpec->getFileContent($template);
 
+        $this->createFile($filePath, $content);
+    }
+
+    private function createFile($filePath, $content)
+    {
         $handler = fopen($filePath, 'x+');
 
         fwrite($handler, $content);
+    }
+
+    private function getClassNameFromType($type)
+    {
+        return 'Davework\FileSpec\Slim\\' . $type . 'FileSpec';
+    }
+
+    private function getTopLevelNamespace($type)
+    {
+        if (substr($type, -4) === 'Test') {
+            $topLevelNamespace = $this->topLevelTestNamespace;
+        } else {
+            $topLevelNamespace = $this->topLevelNamespace;
+        }
+
+        return $topLevelNamespace;
     }
 }

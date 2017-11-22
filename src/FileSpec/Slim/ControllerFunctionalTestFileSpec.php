@@ -1,7 +1,9 @@
 <?php
 namespace Davework\FileSpec\Slim;
 
-class ControllerFunctionalTestFileSpec
+use Davework\FileSpec\FileSpecInterface;
+
+class ControllerFunctionalTestFileSpec implements FileSpecInterface
 {
     private $topLevelNamespace;
     private $fileName;

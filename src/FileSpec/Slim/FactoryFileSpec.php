@@ -1,7 +1,9 @@
 <?php
 namespace Davework\FileSpec\Slim;
 
-class FactoryFileSpec
+use Davework\FileSpec\FileSpecInterface;
+
+class FactoryFileSpec implements FileSpecInterface
 {
     private $namespace;
     private $fileName;

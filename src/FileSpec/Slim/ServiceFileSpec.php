@@ -1,7 +1,9 @@
 <?php
 namespace Davework\FileSpec\Slim;
 
-class ServiceFileSpec
+use Davework\FileSpec\FileSpecInterface;
+
+class ServiceFileSpec implements FileSpecInterface
 {
     private $namespace;
     private $fileName;
@@ -32,5 +34,10 @@ class ServiceFileSpec
     public function getFilePath()
     {
         return $this->filePath;
+    }
+
+    public function getAssociatedFiles()
+    {
+        return $this->getAssociatedFiles();
     }
 }

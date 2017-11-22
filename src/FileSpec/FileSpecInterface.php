@@ -6,4 +6,6 @@ interface FileSpecInterface
 {
 
     public function getAssociatedFiles();
+    public function getFileContent($template);
+    public function getFilePath();
 }

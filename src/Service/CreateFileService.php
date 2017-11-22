@@ -2,13 +2,6 @@
 
 namespace Davework\Service;
 
-use Davework\FileSpec\Slim\ControllerFileSpec;
-use Davework\FileSpec\Slim\ControllerFunctionalTestFileSpec;
-use Davework\FileSpec\Slim\FactoryFileSpec;
-use Davework\FileSpec\Slim\FactoryFunctionalTestFileSpec;
-use Davework\FileSpec\Slim\ServiceFileSpec;
-use Davework\FileSpec\Slim\ServiceFunctionalTestFileSpec;
-
 class CreateFileService implements CreateFileInterface
 {
     private $templateService;

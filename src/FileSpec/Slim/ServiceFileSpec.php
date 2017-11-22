@@ -38,6 +38,6 @@ class ServiceFileSpec implements FileSpecInterface
 
     public function getAssociatedFiles()
     {
-        return $this->getAssociatedFiles();
+        return $this->associatedFiles;
     }
 }

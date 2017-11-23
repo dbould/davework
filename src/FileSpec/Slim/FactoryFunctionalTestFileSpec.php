@@ -13,7 +13,7 @@ class FactoryFunctionalTestFileSpec implements FileSpecInterface
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Factory';
-        $this->className = $fileName;
+        $this->className = $fileName . 'Factory';
         $this->filePath = $baseFilePath . '/tests/Factory/' . $fileName . 'FactoryTest.php';
 
         $this->associatedFiles = [];
@@ -32,7 +32,7 @@ class FactoryFunctionalTestFileSpec implements FileSpecInterface
             $template,
             $this->topLevelNamespace,
             $classToTest,
-            $this->className . 'Factory',
+            $this->className,
             $classToTest,
             $classToTest
         );

@@ -26,7 +26,7 @@ class ServiceFunctionalTestFileSpec implements FileSpecInterface
 
     public function getFileContent($template)
     {
-        $classToTest = 'Davework\Service\\' . $this->fileName . 'Service';
+        $classToTest = 'Davework\Service\\' . $this->className;
 
         return sprintf(
             $template,
@@ -38,5 +38,10 @@ class ServiceFunctionalTestFileSpec implements FileSpecInterface
     public function getFilePath()
     {
         return $this->filePath;
+    }
+
+    public function getClassName()
+    {
+        return $this->className;
     }
 }

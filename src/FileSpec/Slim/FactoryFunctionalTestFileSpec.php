@@ -26,7 +26,7 @@ class FactoryFunctionalTestFileSpec implements FileSpecInterface
 
     public function getFileContent($template)
     {
-        $classToTest = 'Davework\Factory\\' . $this->fileName . 'Factory';
+        $classToTest = 'Davework\Factory\\' . $this->className;
 
         return sprintf(
             $template,
@@ -41,5 +41,10 @@ class FactoryFunctionalTestFileSpec implements FileSpecInterface
     public function getFilePath()
     {
         return $this->filePath;
+    }
+
+    public function getClassName()
+    {
+        return $this->className;
     }
 }

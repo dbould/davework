@@ -19,7 +19,7 @@ class ControllerFileSpec implements FileSpecInterface
         $this->associatedFiles = [
             ControllerFunctionalTestFileSpec::class,
             FactoryFileSpec::class,
-            FactoryFunctionalTestFileSpecFileSpec::class,
+            FactoryFunctionalTestFileSpec::class,
         ];
     }
 

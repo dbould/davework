@@ -19,7 +19,7 @@ class ServiceFileSpec implements FileSpecInterface
         $this->associatedFiles = [
             ServiceFunctionalTestFileSpec::class,
             FactoryFileSpec::class,
-            FactoryFunctionalTestFileSpecFileSpec::class,
+            FactoryFunctionalTestFileSpec::class,
         ];
     }
 

@@ -18,7 +18,7 @@ class FactoryFileSpec implements FileSpecInterface
         $this->filePath = $baseFilePath . '/src/Factory/' . $fileName . 'Factory.php';
 
         $this->associatedFiles = [
-            FactoryFunctionalTestFileSpecFileSpec::class
+            FactoryFunctionalTestFileSpec::class
         ];
     }
 

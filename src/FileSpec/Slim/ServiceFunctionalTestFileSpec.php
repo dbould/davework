@@ -32,7 +32,9 @@ class ServiceFunctionalTestFileSpec implements FileSpecInterface
             $template,
             $this->topLevelNamespace,
             $classToTest,
-            $this->className);
+            $this->className,
+            $this->className
+         );
     }
 
     public function getFilePath()

@@ -41,7 +41,7 @@ class TestController
 
 TESTCONTROLLER;
 
-        $actual = file_get_contents($fileName);
+        $actual = file_get_contents( __DIR__ . '/../../TestFiles/src/Controller/TestController.php');
 
         $this->assertEquals($expected, $actual);
     }
@@ -114,7 +114,7 @@ class TestFactory
 
 TESTFACTORY;
 
-        $actual = file_get_contents($fileName);
+        $actual = file_get_contents(__DIR__ . '/../../TestFiles/src/Factory/TestFactory.php');
 
         $this->assertEquals($expected, $actual);
     }
@@ -169,10 +169,6 @@ TESTFACTORYTEST;
             }
         }
 
-        if (file_exists($fileName)) {
-            unlink($fileName);
-        }
-
         $service = $this->getContainer()->get(CreateFileService::class);
         $service->create('Test', 'Service');
 
@@ -190,7 +186,7 @@ class TestService
 
 TESTSERVICE;
 
-        $actual = file_get_contents($fileName);
+        $actual = file_get_contents(__DIR__ . '/../../TestFiles/src/Service/TestService.php');
 
         $this->assertEquals($expected, $actual);
     }

@@ -171,6 +171,48 @@ TESTFACTORYTEST;
         $service = $this->getContainer()->get(CreateFileService::class);
         $service->create('Test', 'Service');
 
+        $expected = <<<'TESTFACTORYTEST'
+<?php
+namespace Tests\Functional\Factory;
+
+use Davework\Factory\TestFactory;
+use Tests\SlimTestCase;
+
+class TestFactoryTest extends SlimTestCase
+{
+    public function testItReturnsAnInstance()
+    {
+        $actual = $this->getContainer()->get(Davework\Factory\TestFactory::class);
+
+        $this->assertInstanceOf(Davework\Factory\TestFactory::class, $actual);
+    }
+}
+
+TESTFACTORYTEST;
+
+        $actual = file_get_contents(__DIR__ . '/../../TestFiles/tests/Factory/TestFactoryTest.php');
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testItCreatesTestFactoryCorrectlyForServiceFile()
+    {
+        $fileNames = [
+            __DIR__ . '/../../TestFiles/src/Service/TestService.php',
+            __DIR__ . '/../../TestFiles/tests/Service/TestServiceTest.php',
+            __DIR__ . '/../../TestFiles/src/Factory/TestFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Factory/TestFactoryTest.php',
+        ];
+
+        foreach ($fileNames as $fileName) {
+            if (file_exists($fileName)) {
+                unlink($fileName);
+            }
+        }
+
+        $service = $this->getContainer()->get(CreateFileService::class);
+        $service->create('Test', 'Service');
+
         $expected = <<<'TESTSERVICE'
 <?php
 namespace Davework\Service;

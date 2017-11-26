@@ -1,13 +1,10 @@
 <?php
-namespace Tests\Functional\Service;
+namespace Davework\Functional\Service;
 
-use Davework\Service\TestService;
-use Tests\SlimTestCase;
-
-class TestServiceTest extends SlimTestCase
+class Davework\Service\TestService
 {
-    public function test()
+    public function __construct()
     {
-        $this->assertEquals(true, false);
+        
     }
 }

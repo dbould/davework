@@ -9,12 +9,20 @@ class CreateFileServiceTest extends SlimTestCase
 {
     public function testItCreatesControllerFile()
     {
-        $fileName = __DIR__ . '/../../TestFiles/src/Controller/TestController.php';
+        $fileNames = [
+            __DIR__ . '/../../TestFiles/src/Controller/TestController.php',
+            __DIR__ . '/../../TestFiles/tests/Controller/TestControllerTest.php',
+            __DIR__ . '/../../TestFiles/src/Factory/TestFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Factory/TestFactoryTest.php',
+        ];
 
-        if (file_exists($fileName)) {
-            unlink($fileName);
+        foreach ($fileNames as $fileName) {
+            if (file_exists($fileName)) {
+                unlink($fileName);
+            }
         }
 
+        /** @var CreateFileService $service **/
         $service = $this->getContainer()->get(CreateFileService::class);
         $service->create('Test', 'Controller');
 
@@ -77,10 +85,16 @@ TESTCONTROLLERTEST;
 
     public function testItCreatesFactoryFile()
     {
-        $fileName = __DIR__ . '/../../TestFiles/src/Factory/TestFactory.php';
+        $fileNames = [
 
-        if (file_exists($fileName)) {
-            unlink($fileName);
+            __DIR__ . '/../../TestFiles/src/Factory/TestFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Factory/TestFactoryTest.php',
+        ];
+
+        foreach ($fileNames as $fileName) {
+            if (file_exists($fileName)) {
+                unlink($fileName);
+            }
         }
 
         $service = $this->getContainer()->get(CreateFileService::class);
@@ -142,7 +156,18 @@ TESTFACTORYTEST;
 
     public function testItCreatesServiceFile()
     {
-        $fileName = __DIR__ . '/../../TestFiles/src/Service/TestService.php';
+        $fileNames = [
+            __DIR__ . '/../../TestFiles/src/Service/TestService.php',
+            __DIR__ . '/../../TestFiles/tests/Service/TestServiceTest.php',
+            __DIR__ . '/../../TestFiles/src/Factory/TestFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Factory/TestFactoryTest.php',
+        ];
+
+        foreach ($fileNames as $fileName) {
+            if (file_exists($fileName)) {
+                unlink($fileName);
+            }
+        }
 
         if (file_exists($fileName)) {
             unlink($fileName);

@@ -3,8 +3,8 @@ namespace Davework\Factory;
 
 class TestFactory
 {
-    public function __invoke()
+    public function __construct()
     {
-        return new Test();
+        
     }
 }

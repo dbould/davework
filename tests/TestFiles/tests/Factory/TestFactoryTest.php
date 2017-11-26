@@ -1,15 +1,10 @@
 <?php
-namespace Tests\Functional\Factory;
+namespace Davework\Functional\Factory;
 
-use Davework\Factory\TestFactory;
-use Tests\SlimTestCase;
-
-class TestFactoryTest extends SlimTestCase
+class Davework\Factory\TestFactory
 {
-    public function testItReturnsAnInstance()
+    public function __construct()
     {
-        $actual = $this->getContainer()->get(Davework\Factory\TestFactory::class);
-
-        $this->assertInstanceOf(Davework\Factory\TestFactory::class, $actual);
+        
     }
 }

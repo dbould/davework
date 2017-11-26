@@ -27,9 +27,7 @@ class CreateFileService implements CreateFileInterface
     public function create($fileName, $type)
     {
         $template = $this->templateService->getTemplate($type);
-
         $className = $this->getClassNameFromType($type);
-
         $topLevelNamespace = $this->getTopLevelNamespace($type);
 
         $fileSpec = new $className(
@@ -38,10 +36,27 @@ class CreateFileService implements CreateFileInterface
             $this->rootDirectory
         );
 
+        $associatedFiles = $fileSpec->getAssociatedFiles();
+
         $filePath = $fileSpec->getFilePath();
         $content = $fileSpec->getFileContent($template);
 
         $this->createFile($filePath, $content);
+
+        foreach ($associatedFiles as $file) {
+            $topLevelNamespace = $this->getTopLevelNamespace($type);
+
+            $fileSpec = new $file(
+                $topLevelNamespace,
+                $fileName,
+                $this->rootDirectory
+            );
+
+            $filePath = $fileSpec->getFilePath();
+            $content = $fileSpec->getFileContent($template);
+
+            $this->createFile($filePath, $content);
+        }
     }
 
     private function createFile($filePath, $content)

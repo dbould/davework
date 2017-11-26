@@ -20,7 +20,7 @@ class SlimTestCase extends PHPUnit_Framework_TestCase
         if (!isset($this->container)) {
             $app = new App(require __DIR__ . '/../src/settings.php');
 
-            require __DIR__ . '/../src/bootstrap.php';
+            require __DIR__ . '/../bootstrap.php';
 
             $this->container = $app->getContainer();
         }

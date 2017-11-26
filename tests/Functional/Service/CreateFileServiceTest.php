@@ -42,7 +42,6 @@ class TestController
 TESTCONTROLLER;
 
         $actual = file_get_contents( __DIR__ . '/../../TestFiles/src/Controller/TestController.php');
-
         $this->assertEquals($expected, $actual);
     }
 

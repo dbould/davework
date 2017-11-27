@@ -44,6 +44,10 @@ class CreateFileService implements CreateFileInterface
         $this->createFile($filePath, $content);
 
         foreach ($associatedFiles as $file) {
+            $classArray = explode('\\', $file);
+            $type = array_pop($classArray);
+            $type = str_replace('FileSpec', '', $type);
+
             $topLevelNamespace = $this->getTopLevelNamespace($type);
 
             $fileSpec = new $file(
@@ -51,6 +55,8 @@ class CreateFileService implements CreateFileInterface
                 $fileName,
                 $this->rootDirectory
             );
+
+            $template = $this->templateService->getTemplate($type);
 
             $filePath = $fileSpec->getFilePath();
             $content = $fileSpec->getFileContent($template);

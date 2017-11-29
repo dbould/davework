@@ -173,24 +173,19 @@ TESTFACTORYTEST;
 
         $expected = <<<'TESTFACTORYTEST'
 <?php
-namespace Tests\Functional\Factory;
+namespace Davework\Service;
 
-use Davework\Factory\TestFactory;
-use Tests\SlimTestCase;
-
-class TestFactoryTest extends SlimTestCase
+class TestService
 {
-    public function testItReturnsAnInstance()
+    public function __construct()
     {
-        $actual = $this->getContainer()->get(Davework\Factory\TestFactory::class);
-
-        $this->assertInstanceOf(Davework\Factory\TestFactory::class, $actual);
+        
     }
 }
 
 TESTFACTORYTEST;
 
-        $actual = file_get_contents(__DIR__ . '/../../TestFiles/tests/Functional/Factory/TestFactoryTest.php');
+        $actual = file_get_contents(__DIR__ . '/../../TestFiles/src/Service/TestService.php');
 
         $this->assertEquals($expected, $actual);
     }

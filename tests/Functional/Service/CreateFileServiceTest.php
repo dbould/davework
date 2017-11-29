@@ -11,9 +11,9 @@ class CreateFileServiceTest extends SlimTestCase
     {
         $fileNames = [
             __DIR__ . '/../../TestFiles/src/Controller/TestController.php',
-            __DIR__ . '/../../TestFiles/tests/Controller/TestControllerTest.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Controller/TestControllerTest.php',
             __DIR__ . '/../../TestFiles/src/Factory/TestFactory.php',
-            __DIR__ . '/../../TestFiles/tests/Factory/TestFactoryTest.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Factory/TestFactoryTest.php',
         ];
 
         foreach ($fileNames as $fileName) {
@@ -47,7 +47,7 @@ TESTCONTROLLER;
 
     public function testItCreatesControllerTestFile()
     {
-        $fileName = __DIR__ . '/../../TestFiles/tests/Controller/TestControllerTest.php';
+        $fileName = __DIR__ . '/../../TestFiles/tests/Functional/Controller/TestControllerTest.php';
 
         if (file_exists($fileName)) {
             unlink($fileName);
@@ -87,7 +87,7 @@ TESTCONTROLLERTEST;
         $fileNames = [
 
             __DIR__ . '/../../TestFiles/src/Factory/TestFactory.php',
-            __DIR__ . '/../../TestFiles/tests/Factory/TestFactoryTest.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Factory/TestFactoryTest.php',
         ];
 
         foreach ($fileNames as $fileName) {
@@ -120,7 +120,7 @@ TESTFACTORY;
 
     public function testItCreatesFactoryTestFile()
     {
-        $fileName = __DIR__ . '/../../TestFiles/tests/Factory/TestFactoryTest.php';
+        $fileName = __DIR__ . '/../../TestFiles/tests/Functional/Factory/TestFactoryTest.php';
 
         if (file_exists($fileName)) {
             unlink($fileName);
@@ -157,9 +157,9 @@ TESTFACTORYTEST;
     {
         $fileNames = [
             __DIR__ . '/../../TestFiles/src/Service/TestService.php',
-            __DIR__ . '/../../TestFiles/tests/Service/TestServiceTest.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Service/TestServiceTest.php',
             __DIR__ . '/../../TestFiles/src/Factory/TestFactory.php',
-            __DIR__ . '/../../TestFiles/tests/Factory/TestFactoryTest.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Factory/TestFactoryTest.php',
         ];
 
         foreach ($fileNames as $fileName) {
@@ -190,7 +190,7 @@ class TestFactoryTest extends SlimTestCase
 
 TESTFACTORYTEST;
 
-        $actual = file_get_contents(__DIR__ . '/../../TestFiles/tests/Factory/TestFactoryTest.php');
+        $actual = file_get_contents(__DIR__ . '/../../TestFiles/tests/Functional/Factory/TestFactoryTest.php');
 
         $this->assertEquals($expected, $actual);
     }
@@ -199,9 +199,9 @@ TESTFACTORYTEST;
     {
         $fileNames = [
             __DIR__ . '/../../TestFiles/src/Service/TestService.php',
-            __DIR__ . '/../../TestFiles/tests/Service/TestServiceTest.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Service/TestServiceTest.php',
             __DIR__ . '/../../TestFiles/src/Factory/TestFactory.php',
-            __DIR__ . '/../../TestFiles/tests/Factory/TestFactoryTest.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Factory/TestFactoryTest.php',
         ];
 
         foreach ($fileNames as $fileName) {
@@ -234,7 +234,7 @@ TESTSERVICE;
 
     public function testItCreatesServiceTestFile()
     {
-        $fileName = __DIR__ . '/../../TestFiles/tests/Service/TestServiceTest.php';
+        $fileName = __DIR__ . '/../../TestFiles/tests/Functional/Service/TestServiceTest.php';
 
         if (file_exists($fileName)) {
             unlink($fileName);

@@ -14,7 +14,7 @@ class ServiceFunctionalTestFileSpec implements FileSpecInterface
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Service';
         $this->className = $fileName . 'Service';
-        $this->filePath = $baseFilePath . '/tests/Service/' . $fileName . 'ServiceTest.php';
+        $this->filePath = $baseFilePath . '/tests/Functional/Service/' . $fileName . 'ServiceTest.php';
 
         $this->associatedFiles = [];
     }

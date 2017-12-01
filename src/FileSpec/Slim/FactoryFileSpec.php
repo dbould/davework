@@ -15,12 +15,12 @@ class FactoryFileSpec implements FileSpecInterface
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
         $this->namespace = $topLevelNamespace . '\Factory';
-        $this->className = $fileName . 'Factory';
-        $this->filePath = $baseFilePath . '/src/Factory/' . $fileName . 'Factory.php';
-        $this->classToReturn = $fileName;
+        $this->className = $fileName;
+        $this->filePath = $baseFilePath . '/src/Factory/' . $fileName . '.php';
+        $this->classToReturn = str_replace('Factory', '', $fileName);
 
         $this->associatedFiles = [
-            FactoryFunctionalTestFileSpec::class
+            FactoryTestFileSpec::class
         ];
     }
 

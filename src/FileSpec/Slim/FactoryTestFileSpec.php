@@ -3,7 +3,7 @@ namespace Davework\FileSpec\Slim;
 
 use Davework\FileSpec\FileSpecInterface;
 
-class ServiceFunctionalTestFileSpec implements FileSpecInterface
+class FactoryTestFileSpec implements FileSpecInterface
 {
     private $topLevelNamespace;
     private $className;
@@ -12,9 +12,9 @@ class ServiceFunctionalTestFileSpec implements FileSpecInterface
 
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
-        $this->topLevelNamespace = $topLevelNamespace . '\Functional\Service';
-        $this->className = $fileName . 'Service';
-        $this->filePath = $baseFilePath . '/tests/Functional/Service/' . $fileName . 'ServiceTest.php';
+        $this->topLevelNamespace = $topLevelNamespace . '\Functional\Factory';
+        $this->className = $fileName;
+        $this->filePath = $baseFilePath . '/tests/Functional/Factory/' . $fileName . '.php';
 
         $this->associatedFiles = [];
     }
@@ -26,15 +26,17 @@ class ServiceFunctionalTestFileSpec implements FileSpecInterface
 
     public function getFileContent($template)
     {
-        $classToTest = 'Davework\Service\\' . $this->className;
+        $classToTest = substr($this->className, 0, -4);
+        $classToTest = 'Davework\Factory\\' . $classToTest;
 
         return sprintf(
             $template,
             $this->topLevelNamespace,
             $classToTest,
             $this->className,
-            $this->className
-         );
+            $classToTest,
+            $classToTest
+        );
     }
 
     public function getFilePath()

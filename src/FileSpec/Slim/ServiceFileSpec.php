@@ -13,13 +13,13 @@ class ServiceFileSpec implements FileSpecInterface
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
         $this->namespace = $topLevelNamespace . '\Service';
-        $this->className = $fileName . 'Service';
-        $this->filePath = $baseFilePath . '/src/Service/' . $fileName . 'Service.php';
+        $this->className = $fileName;
+        $this->filePath = $baseFilePath . '/src/Service/' . $fileName . '.php';
 
         $this->associatedFiles = [
-            ServiceFunctionalTestFileSpec::class,
+            ServiceTestFileSpec::class,
             FactoryFileSpec::class,
-            FactoryFunctionalTestFileSpec::class,
+            FactoryTestFileSpec::class,
         ];
     }
 

@@ -3,7 +3,7 @@ namespace Davework\FileSpec\Slim;
 
 use Davework\FileSpec\FileSpecInterface;
 
-class ControllerFunctionalTestFileSpec implements FileSpecInterface
+class ControllerTestFileSpec implements FileSpecInterface
 {
     private $topLevelNamespace;
     private $className;
@@ -13,8 +13,8 @@ class ControllerFunctionalTestFileSpec implements FileSpecInterface
     public function __construct($topLevelNamespace, $fileName, $baseFilePath)
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Controller';
-        $this->className = $fileName . 'Controller';
-        $this->filePath = $baseFilePath . '/tests/Functional/Controller/' . $fileName . 'ControllerTest.php';
+        $this->className = $fileName;
+        $this->filePath = $baseFilePath . '/tests/Functional/Controller/' . $fileName . '.php';
 
         $this->associatedFiles = [];
     }

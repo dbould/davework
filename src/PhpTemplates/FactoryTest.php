@@ -6,7 +6,7 @@ namespace %s;
 use %s;
 use Tests\SlimTestCase;
 
-class %sTest extends SlimTestCase
+class %s extends SlimTestCase
 {
     public function testItReturnsAnInstance()
     {

@@ -3,7 +3,7 @@ return <<<'CONTROLLERTEST'
 <?php
 namespace %s;
 
-class %sTest extends BaseTestCase
+class %s extends BaseTestCase
 {
     /**
      * Test that the index route returns a rendered response containing the text 'SlimFramework' but not a greeting

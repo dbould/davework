@@ -31,7 +31,7 @@ CONTROLLER;
         $this->assertEquals($expected, $actual);
     }
 
-    public function testGetControllerFunctionalTestTemplate()
+    public function testGetControllerTestTemplate()
     {
         $service = $this->getContainer()->get(TemplateService::class);
 
@@ -39,7 +39,7 @@ CONTROLLER;
 <?php
 namespace %s;
 
-class %sTest extends BaseTestCase
+class %s extends BaseTestCase
 {
     /**
      * Test that the index route returns a rendered response containing the text 'SlimFramework' but not a greeting
@@ -56,7 +56,7 @@ class %sTest extends BaseTestCase
 
 CONTROLLERTEST;
 
-        $actual = $service->getTemplate('ControllerFunctionalTest');
+        $actual = $service->getTemplate('ControllerTest');
 
         $this->assertEquals($expected, $actual);
     }
@@ -84,7 +84,7 @@ TESTFACTORY;
         $this->assertEquals($expected, $actual);
     }
 
-    public function testGetFactoryFunctionalTestTemplate()
+    public function testGetFactoryTestTemplate()
     {
         $service = $this->getContainer()->get(TemplateService::class);
 
@@ -95,7 +95,7 @@ namespace %s;
 use %s;
 use Tests\SlimTestCase;
 
-class %sTest extends SlimTestCase
+class %s extends SlimTestCase
 {
     public function testItReturnsAnInstance()
     {
@@ -107,7 +107,7 @@ class %sTest extends SlimTestCase
 
 FACTORYTEST;
 
-        $actual = $service->getTemplate('FactoryFunctionalTest');
+        $actual = $service->getTemplate('FactoryTest');
 
         $this->assertEquals($expected, $actual);
     }
@@ -135,7 +135,7 @@ SERVICE;
         $this->assertEquals($expected, $actual);
     }
 
-    public function testGetServiceFunctionalTestTemplate()
+    public function testGetServiceTestTemplate()
     {
         $service = $this->getContainer()->get(TemplateService::class);
 
@@ -146,7 +146,7 @@ namespace %s;
 use %s;
 use Tests\SlimTestCase;
 
-class %sTest extends SlimTestCase
+class %s extends SlimTestCase
 {
     public function test()
     {
@@ -156,7 +156,7 @@ class %sTest extends SlimTestCase
 
 SERVICETEST;
 
-        $actual = $service->getTemplate('ServiceFunctionalTest');
+        $actual = $service->getTemplate('ServiceTest');
 
         $this->assertEquals($expected, $actual);
     }

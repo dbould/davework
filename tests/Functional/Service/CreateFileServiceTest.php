@@ -12,8 +12,8 @@ class CreateFileServiceTest extends SlimTestCase
         $fileNames = [
             __DIR__ . '/../../TestFiles/src/Controller/TestController.php',
             __DIR__ . '/../../TestFiles/tests/Functional/Controller/TestControllerTest.php',
-            __DIR__ . '/../../TestFiles/src/Factory/TestFactory.php',
-            __DIR__ . '/../../TestFiles/tests/Functional/Factory/TestFactoryTest.php',
+            __DIR__ . '/../../TestFiles/src/Factory/TestControllerFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Factory/TestControllerFactoryTest.php',
         ];
 
         foreach ($fileNames as $fileName) {
@@ -54,7 +54,7 @@ TESTCONTROLLER;
         }
 
         $service = $this->getContainer()->get(CreateFileService::class);
-        $service->create('Test', 'ControllerFunctionalTest');
+        $service->create('Test', 'ControllerTest');
 
         $expected = <<<'TESTCONTROLLERTEST'
 <?php
@@ -127,7 +127,7 @@ TESTFACTORY;
         }
 
         $service = $this->getContainer()->get(CreateFileService::class);
-        $service->create('Test', 'FactoryFunctionalTest');
+        $service->create('Test', 'FactoryTest');
 
         $expected = <<<'TESTFACTORYTEST'
 <?php
@@ -158,8 +158,8 @@ TESTFACTORYTEST;
         $fileNames = [
             __DIR__ . '/../../TestFiles/src/Service/TestService.php',
             __DIR__ . '/../../TestFiles/tests/Functional/Service/TestServiceTest.php',
-            __DIR__ . '/../../TestFiles/src/Factory/TestFactory.php',
-            __DIR__ . '/../../TestFiles/tests/Functional/Factory/TestFactoryTest.php',
+            __DIR__ . '/../../TestFiles/src/Factory/TestServiceFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Factory/TestServiceFactoryTest.php',
         ];
 
         foreach ($fileNames as $fileName) {
@@ -195,8 +195,8 @@ TESTFACTORYTEST;
         $fileNames = [
             __DIR__ . '/../../TestFiles/src/Service/TestService.php',
             __DIR__ . '/../../TestFiles/tests/Functional/Service/TestServiceTest.php',
-            __DIR__ . '/../../TestFiles/src/Factory/TestFactory.php',
-            __DIR__ . '/../../TestFiles/tests/Functional/Factory/TestFactoryTest.php',
+            __DIR__ . '/../../TestFiles/src/Factory/TestServiceFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Factory/TestServiceFactoryTest.php',
         ];
 
         foreach ($fileNames as $fileName) {
@@ -236,7 +236,7 @@ TESTSERVICE;
         }
 
         $service = $this->getContainer()->get(CreateFileService::class);
-        $service->create('Test', 'ServiceFunctionalTest');
+        $service->create('Test', 'ServiceTest');
 
         $expected = <<<'TESTSERVICETEST'
 <?php

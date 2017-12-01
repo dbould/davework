@@ -32,7 +32,7 @@ class CreateFileService implements CreateFileInterface
 
         $fileSpec = new $className(
             $topLevelNamespace,
-            $fileName,
+            $fileName . $type,
             $this->rootDirectory
         );
 
@@ -43,6 +43,8 @@ class CreateFileService implements CreateFileInterface
 
         $this->createFile($filePath, $content);
 
+        $requestedType = $type;
+
         foreach ($associatedFiles as $file) {
             $classArray = explode('\\', $file);
             $type = array_pop($classArray);
@@ -50,9 +52,12 @@ class CreateFileService implements CreateFileInterface
 
             $topLevelNamespace = $this->getTopLevelNamespace($type);
 
+            $associatedFileName = (strpos($type, $requestedType) !== false)? $type:$requestedType . $type;
+            $associatedFileName = $fileName . $associatedFileName;
+
             $fileSpec = new $file(
                 $topLevelNamespace,
-                $fileName,
+                $associatedFileName,
                 $this->rootDirectory
             );
 

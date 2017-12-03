@@ -1,12 +1,24 @@
 <?php
-
 namespace Davework\Service;
 
 class FileSpecTypeService
 {
-    public function getRootDirectory($type, $rootDirectory, $testRootDirectory)
+    public function __construct(
+        $topLevelNamespace,
+        $topLevelTestNamespace,
+        $rootDirectory,
+        $testRootDirectory
+    )
     {
-        return (substr($type, -4) === 'Test') ? $testRootDirectory : $rootDirectory;
+        $this->topLevelNamespace = $topLevelNamespace;
+        $this->topLevelTestNamespace = $topLevelTestNamespace;
+        $this->rootDirectory = $rootDirectory;
+        $this->testRootDirectory = $testRootDirectory;
+    }
+
+    public function getRootDirectory($type)
+    {
+        return (substr($type, -4) === 'Test') ? $this->testRootDirectory : $this->rootDirectory;
     }
 
     public function getTypeFromFileName($fileName)
@@ -17,12 +29,12 @@ class FileSpecTypeService
         return str_replace('FileSpec', '', $type);
     }
 
-    public function getTopLevelNamespace($type, $topLevelNamespace, $topLevelTestNamespace)
+    public function getTopLevelNamespace($type)
     {
         if (substr($type, -4) === 'Test') {
-            $topLevelNamespace = $topLevelTestNamespace;
+            $topLevelNamespace = $this->topLevelTestNamespace;
         } else {
-            $topLevelNamespace = $topLevelNamespace;
+            $topLevelNamespace = $this->topLevelNamespace;
         }
 
         return $topLevelNamespace;

@@ -2,6 +2,7 @@
 // DIC configuration
 
 use Davework\Factory\CreateFileServiceFactory;
+use Davework\Factory\FileSpecTypeServiceFactory;
 use Davework\Factory\TemplateServiceFactory;
 use Davework\Service\CreateFileService;
 use Davework\Service\FileSpecTypeService;
@@ -26,4 +27,4 @@ $container['logger'] = function ($c) {
 
 $container[CreateFileService::class] = new CreateFileServiceFactory($container);
 $container[TemplateService::class] = new TemplateServiceFactory($container);
-$container[FileSpecTypeService::class] = new FileSpecTypeService();
+$container[FileSpecTypeService::class] = new FileSpecTypeServiceFactory($container);

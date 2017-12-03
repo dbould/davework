@@ -22,28 +22,20 @@ class CreateFileService implements CreateFileInterface
      */
     public function __construct(
         TemplateService $templateService,
-        FileSpecTypeService $fileSpecTypeService,
-        $topLevelNamespace,
-        $topLevelTestNamespace,
-        $rootDirectory,
-        $testRootDirectory
+        FileSpecTypeService $fileSpecTypeService
     )
     {
         $this->templateService = $templateService;
         $this->fileSpecTypeService = $fileSpecTypeService;
-        $this->topLevelNamespace = $topLevelNamespace;
-        $this->topLevelTestNamespace = $topLevelTestNamespace;
-        $this->rootDirectory = $rootDirectory;
-        $this->testRootDirectory = $testRootDirectory;
     }
 
     public function create($fileName, $type)
     {
         $template = $this->templateService->getTemplate($type);
         $className = $this->getClassNameFromType($type);
-        $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type, $this->topLevelNamespace, $this->topLevelTestNamespace);
+        $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type);
 
-        $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type, $this->rootDirectory, $this->testRootDirectory);
+        $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type);
 
         $fileSpec = new $className(
             $topLevelNamespace,
@@ -63,12 +55,12 @@ class CreateFileService implements CreateFileInterface
         foreach ($associatedFiles as $file) {
             $type = $this->fileSpecTypeService->getTypeFromFileName($file);
 
-            $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type, $this->topLevelNamespace, $this->topLevelTestNamespace);
+            $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type);
 
             $associatedFileName = (strpos($type, $requestedType) !== false)? $type:$requestedType . $type;
             $associatedFileName = $fileName . $associatedFileName;
 
-            $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type, $this->rootDirectory, $this->testRootDirectory);
+            $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type);
 
             $fileSpec = new $file(
                 $topLevelNamespace,

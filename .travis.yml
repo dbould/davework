@@ -1,0 +1,10 @@
+dist: trusty
+
+language: php
+
+php:
+  - 7.0
+
+script:
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
+  - bash <(curl -s https://codecov.io/bash) -t 4c4ff856-cb27-4ccc-8f0e-d4c54914da6e

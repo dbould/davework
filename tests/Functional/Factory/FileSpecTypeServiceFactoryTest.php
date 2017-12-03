@@ -2,15 +2,15 @@
 
 namespace Tests\Functional\Factory;
 
-use Davework\Service\CreateFileService;
+use Davework\Service\FileSpecTypeService;
 use Tests\SlimTestCase;
 
 class FileSpecTypeServiceFactoryTest extends SlimTestCase
 {
     public function testItReturnsAnInstance()
     {
-        $actual = $this->getContainer()->get(CreateFileService::class);
+        $actual = $this->getContainer()->get(FileSpecTypeService::class);
 
-        $this->assertInstanceOf(CreateFileService::class, $actual);
+        $this->assertInstanceOf(FileSpecTypeService::class, $actual);
     }
 }

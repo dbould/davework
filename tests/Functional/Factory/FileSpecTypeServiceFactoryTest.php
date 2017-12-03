@@ -5,7 +5,7 @@ namespace Tests\Functional\Factory;
 use Davework\Service\CreateFileService;
 use Tests\SlimTestCase;
 
-class CreateFileServiceFactoryTest extends SlimTestCase
+class FileSpecTypeServiceFactoryTest extends SlimTestCase
 {
     public function testItReturnsAnInstance()
     {

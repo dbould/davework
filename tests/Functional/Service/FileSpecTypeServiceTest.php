@@ -16,6 +16,6 @@ class FileSpecTypeServiceTest
 
     public function testGetTopLevelNamespace()
     {
-        
+
     }
 }

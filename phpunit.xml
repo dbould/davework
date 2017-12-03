@@ -5,4 +5,15 @@
             <exclude>tests/TestFiles</exclude>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src/</directory>
+            <exclude>
+                <directory suffix="middleware.php">src/</directory>
+                <directory suffix="dependencies.php">src/</directory>
+                <directory suffix="settings.php">src/</directory>
+                <directory suffix="routes.php">src/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
 </phpunit>

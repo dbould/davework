@@ -19,5 +19,6 @@ $configJson = file_get_contents('davework.json');
 $projectRoot = pathinfo(realpath('davework.json'), PATHINFO_DIRNAME);
 $config = json_decode($configJson);
 $config->rootDirectory = $projectRoot . '/' . $config->rootDirectory;
+$config->testsDirectory = $projectRoot . '/' . $config->testsDirectory;
 
 $container['config'] = $config;

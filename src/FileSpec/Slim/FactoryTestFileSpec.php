@@ -14,7 +14,7 @@ class FactoryTestFileSpec implements FileSpecInterface
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Factory';
         $this->className = $fileName;
-        $this->filePath = $baseFilePath . '/tests/Functional/Factory/' . $fileName . '.php';
+        $this->filePath = $baseFilePath . '/Factory/' . $fileName . '.php';
 
         $this->associatedFiles = [];
     }

@@ -14,7 +14,7 @@ class ControllerTestFileSpec implements FileSpecInterface
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Controller';
         $this->className = $fileName;
-        $this->filePath = $baseFilePath . '/tests/Functional/Controller/' . $fileName . '.php';
+        $this->filePath = $baseFilePath . '/Controller/' . $fileName . '.php';
 
         $this->associatedFiles = [];
     }

@@ -42,10 +42,12 @@ class CreateFileService implements CreateFileInterface
         $className = $this->getClassNameFromType($type);
         $topLevelNamespace = $this->getTopLevelNamespace($type);
 
+        $rootDirectory = (substr($type, -4) === 'Test') ? $this->testRootDirectory : $this->rootDirectory;
+
         $fileSpec = new $className(
             $topLevelNamespace,
             $fileName . $type,
-            $this->rootDirectory
+            $rootDirectory
         );
 
         $associatedFiles = $fileSpec->getAssociatedFiles();
@@ -67,10 +69,12 @@ class CreateFileService implements CreateFileInterface
             $associatedFileName = (strpos($type, $requestedType) !== false)? $type:$requestedType . $type;
             $associatedFileName = $fileName . $associatedFileName;
 
+            $rootDirectory = (substr($type, -4) === 'Test') ? $this->testRootDirectory : $this->rootDirectory;
+
             $fileSpec = new $file(
                 $topLevelNamespace,
                 $associatedFileName,
-                $this->rootDirectory
+                $rootDirectory
             );
 
             $template = $this->templateService->getTemplate($type);

@@ -30,18 +30,18 @@ class CreateFileService implements CreateFileInterface
     )
     {
         $this->templateService = $templateService;
+        $this->fileSpecTypeService = $fileSpecTypeService;
         $this->topLevelNamespace = $topLevelNamespace;
         $this->topLevelTestNamespace = $topLevelTestNamespace;
         $this->rootDirectory = $rootDirectory;
         $this->testRootDirectory = $testRootDirectory;
-        $this->fileSpecTypeService = $fileSpecTypeService;
     }
 
     public function create($fileName, $type)
     {
         $template = $this->templateService->getTemplate($type);
         $className = $this->getClassNameFromType($type);
-        $topLevelNamespace = $this->getTopLevelNamespace($type);
+        $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type, $this->topLevelNamespace, $this->topLevelTestNamespace);
 
         $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type, $this->rootDirectory, $this->testRootDirectory);
 
@@ -61,11 +61,9 @@ class CreateFileService implements CreateFileInterface
         $requestedType = $type;
 
         foreach ($associatedFiles as $file) {
-            $classArray = explode('\\', $file);
-            $type = array_pop($classArray);
-            $type = str_replace('FileSpec', '', $type);
+            $type = $this->fileSpecTypeService->getTypeFromFileName($file);
 
-            $topLevelNamespace = $this->getTopLevelNamespace($type);
+            $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type, $this->topLevelNamespace, $this->topLevelTestNamespace);
 
             $associatedFileName = (strpos($type, $requestedType) !== false)? $type:$requestedType . $type;
             $associatedFileName = $fileName . $associatedFileName;
@@ -97,16 +95,5 @@ class CreateFileService implements CreateFileInterface
     private function getClassNameFromType($type)
     {
         return 'Davework\FileSpec\Slim\\' . $type . 'FileSpec';
-    }
-
-    private function getTopLevelNamespace($type)
-    {
-        if (substr($type, -4) === 'Test') {
-            $topLevelNamespace = $this->topLevelTestNamespace;
-        } else {
-            $topLevelNamespace = $this->topLevelNamespace;
-        }
-
-        return $topLevelNamespace;
     }
 }

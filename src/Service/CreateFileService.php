@@ -8,21 +8,21 @@ class CreateFileService implements CreateFileInterface
     private $topLevelNamespace;
     private $topLevelTestNamespace;
     private $rootDirectory;
-    /**
-     * @var
-     */
     private $testRootDirectory;
+    private $fileSpecTypeService;
 
     /**
      * CreateFileService constructor.
      * @param TemplateService $templateService
+     * @param FileSpecTypeService $fileSpecTypeService
      * @param $topLevelNamespace
      * @param $topLevelTestNamespace
      * @param $rootDirectory
      * @param $testRootDirectory
      */
     public function __construct(
-        $templateService,
+        TemplateService $templateService,
+        FileSpecTypeService $fileSpecTypeService,
         $topLevelNamespace,
         $topLevelTestNamespace,
         $rootDirectory,
@@ -34,6 +34,7 @@ class CreateFileService implements CreateFileInterface
         $this->topLevelTestNamespace = $topLevelTestNamespace;
         $this->rootDirectory = $rootDirectory;
         $this->testRootDirectory = $testRootDirectory;
+        $this->fileSpecTypeService = $fileSpecTypeService;
     }
 
     public function create($fileName, $type)
@@ -42,7 +43,7 @@ class CreateFileService implements CreateFileInterface
         $className = $this->getClassNameFromType($type);
         $topLevelNamespace = $this->getTopLevelNamespace($type);
 
-        $rootDirectory = $this->getRootDirectory($type);
+        $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type, $this->rootDirectory, $this->testRootDirectory);
 
         $fileSpec = new $className(
             $topLevelNamespace,
@@ -69,7 +70,7 @@ class CreateFileService implements CreateFileInterface
             $associatedFileName = (strpos($type, $requestedType) !== false)? $type:$requestedType . $type;
             $associatedFileName = $fileName . $associatedFileName;
 
-            $rootDirectory = $this->getRootDirectory($type);
+            $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type, $this->rootDirectory, $this->testRootDirectory);
 
             $fileSpec = new $file(
                 $topLevelNamespace,
@@ -84,11 +85,6 @@ class CreateFileService implements CreateFileInterface
 
             $this->createFile($filePath, $content);
         }
-    }
-
-    private function getRootDirectory($type)
-    {
-        return (substr($type, -4) === 'Test') ? $this->testRootDirectory : $this->rootDirectory;
     }
 
     private function createFile($filePath, $content)

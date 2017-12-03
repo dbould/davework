@@ -9,14 +9,23 @@ class ServiceTestFileSpec implements FileSpecInterface
     private $className;
     private $filePath;
     private $associatedFiles;
+    private $baseTestPath;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath)
+    /**
+     * ServiceTestFileSpec constructor.
+     * @param string $topLevelNamespace
+     * @param string $fileName
+     * @param string $baseFilePath
+     * @param string $baseTestPath
+     */
+    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $baseTestPath)
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Service';
         $this->className = $fileName;
         $this->filePath = $baseFilePath . '/tests/Functional/Service/' . $fileName . '.php';
 
         $this->associatedFiles = [];
+        $this->baseTestPath = $baseTestPath;
     }
 
     public function getAssociatedFiles()

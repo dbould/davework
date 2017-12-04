@@ -43,9 +43,4 @@ class FactoryTestFileSpec implements FileSpecInterface
     {
         return $this->filePath;
     }
-
-    public function getClassName()
-    {
-        return $this->className;
-    }
 }

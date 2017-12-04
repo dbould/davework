@@ -40,9 +40,4 @@ class ServiceFileSpec implements FileSpecInterface
     {
         return $this->associatedFiles;
     }
-
-    public function getClassName()
-    {
-        return $this->className;
-    }
 }

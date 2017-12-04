@@ -171,7 +171,7 @@ TESTFACTORYTEST;
         $service = $this->getContainer()->get(CreateFileService::class);
         $service->create('Test', 'Service');
 
-        $expected = <<<'TESTFACTORYTEST'
+        $expected = <<<'TESTSERVICE'
 <?php
 namespace Davework\Service;
 
@@ -183,7 +183,7 @@ class TestService
     }
 }
 
-TESTFACTORYTEST;
+TESTSERVICE;
 
         $actual = file_get_contents(__DIR__ . '/../../TestFiles/src/Service/TestService.php');
 

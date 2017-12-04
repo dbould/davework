@@ -36,8 +36,23 @@ class FileSpecTypeServiceTest extends SlimTestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testGetTopLevelNamespace()
+    public function testGetTopLevelNamespaceForNonTest()
     {
+        $service = $this->getContainer()->get(FileSpecTypeService::class);
+        $actual = $service->getTopLevelNamespace('Controller');
 
+        $expected = $this->getContainer()->get('config')->topLevelNamespace;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testGetTopLevelNamespaceForTest()
+    {
+        $service = $this->getContainer()->get(FileSpecTypeService::class);
+        $actual = $service->getTopLevelNamespace('ControllerTest');
+
+        $expected = $this->getContainer()->get('config')->testNamespace;
+
+        $this->assertEquals($expected, $actual);
     }
 }

@@ -16,12 +16,22 @@ class FileSpecTypeServiceTest extends SlimTestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testGetTypeFromFileNameForTest()
+    public function testGetRootDirectoryForTest()
     {
         $service = $this->getContainer()->get(FileSpecTypeService::class);
         $actual = $service->getRootDirectory('ControllerTest');
 
         $expected = $this->getContainer()->get('config')->testsDirectory;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testGetTypeFromFileName()
+    {
+        $service = $this->getContainer()->get(FileSpecTypeService::class);
+        $actual = $service->getTypeFromFileName(FactoryTestFileSpec::class);
+
+        $expected = 'FactoryTest';
 
         $this->assertEquals($expected, $actual);
     }

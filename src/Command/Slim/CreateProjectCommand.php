@@ -23,7 +23,6 @@ class CreateProjectCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         $output->write('HELLO WORLD');
     }
 }

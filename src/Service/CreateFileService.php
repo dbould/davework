@@ -44,28 +44,33 @@ class CreateFileService implements CreateFileInterface
         $requestedType = $type;
 
         foreach ($associatedFiles as $file) {
-            $type = $this->fileSpecTypeService->getTypeFromFileName($file);
-
-            $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type);
-
-            $associatedFileName = (strpos($type, $requestedType) !== false)? $type:$requestedType . $type;
-            $associatedFileName = $fileName . $associatedFileName;
-
-            $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type);
-
-            $fileSpec = new $file(
-                $topLevelNamespace,
-                $associatedFileName,
-                $rootDirectory
-            );
-
-            $template = $this->templateService->getTemplate($type);
-
-            $filePath = $fileSpec->getFilePath();
-            $content = $fileSpec->getFileContent($template);
-
-            $this->createFile($filePath, $content);
+            $this->generateFile($file, $requestedType, $fileName);
         }
+    }
+
+    private function generateFile($file, $requestedType, $fileName)
+    {
+        $type = $this->fileSpecTypeService->getTypeFromFileName($file);
+
+        $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type);
+
+        $associatedFileName = (strpos($type, $requestedType) !== false)? $type:$requestedType . $type;
+        $associatedFileName = $fileName . $associatedFileName;
+
+        $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type);
+
+        $fileSpec = new $file(
+            $topLevelNamespace,
+            $associatedFileName,
+            $rootDirectory
+        );
+
+        $template = $this->templateService->getTemplate($type);
+
+        $filePath = $fileSpec->getFilePath();
+        $content = $fileSpec->getFileContent($template);
+
+        $this->createFile($filePath, $content);
     }
 
     private function createFile($filePath, $content)

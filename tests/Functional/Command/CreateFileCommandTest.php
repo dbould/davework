@@ -94,4 +94,93 @@ TESTSERVICE;
 
         $this->assertEquals($expected, $actual);
     }
+
+    public function testExecuteCreatesFactoryFile()
+    {
+        $fileNames = [
+            __DIR__ . '/../../TestFiles/src/Service/MooMooService.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Service/MooMooServiceTest.php',
+            __DIR__ . '/../../TestFiles/src/Factory/MooMooServiceFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Factory/MooMooServiceFactoryTest.php',
+        ];
+
+        foreach ($fileNames as $fileName) {
+            if (file_exists($fileName)) {
+                unlink($fileName);
+            }
+        }
+
+        $command = new CreateFileCommand($this->getContainer()->get(CreateFileService::class));
+        $commandTest = new CommandTester($command);
+
+        $commandTest->execute([
+            'file-name' => 'MooMoo',
+            'type' => 'Service',
+        ]);
+
+        $actual = file_get_contents($fileNames[2]);
+
+        $expected = <<<'TESTSERVICE'
+<?php
+namespace Davework\Factory;
+
+class MooMooServiceFactory
+{
+    public function __invoke()
+    {
+        return new MooMooService();
+    }
+}
+
+TESTSERVICE;
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testExecuteCreatesFactoryTestFile()
+    {
+        $fileNames = [
+            __DIR__ . '/../../TestFiles/src/Service/MooMooService.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Service/MooMooServiceTest.php',
+            __DIR__ . '/../../TestFiles/src/Factory/MooMooServiceFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Factory/MooMooServiceFactoryTest.php',
+        ];
+
+        foreach ($fileNames as $fileName) {
+            if (file_exists($fileName)) {
+                unlink($fileName);
+            }
+        }
+
+        $command = new CreateFileCommand($this->getContainer()->get(CreateFileService::class));
+        $commandTest = new CommandTester($command);
+
+        $commandTest->execute([
+            'file-name' => 'MooMoo',
+            'type' => 'Service',
+        ]);
+
+        $actual = file_get_contents($fileNames[3]);
+
+        $expected = <<<'TESTSERVICE'
+<?php
+namespace Tests\Functional\Factory;
+
+use Davework\Factory\MooMooServiceFactory;
+use Tests\SlimTestCase;
+
+class MooMooServiceFactoryTest extends SlimTestCase
+{
+    public function testItReturnsAnInstance()
+    {
+        $actual = $this->getContainer()->get(Davework\Factory\MooMooServiceFactory::class);
+
+        $this->assertInstanceOf(Davework\Factory\MooMooServiceFactory::class, $actual);
+    }
+}
+
+TESTSERVICE;
+
+        $this->assertEquals($expected, $actual);
+    }
 }

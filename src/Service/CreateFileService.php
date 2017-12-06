@@ -22,46 +22,33 @@ class CreateFileService implements CreateFileInterface
 
     public function create($fileName, $type)
     {
-        $template = $this->templateService->getTemplate($type);
         $className = $this->getClassNameFromType($type);
         $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type);
 
-        $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type);
-
-        $fileSpec = new $className(
-            $topLevelNamespace,
-            $fileName . $type,
-            $rootDirectory
-        );
+        $fileSpec = $this->generateFile($className, $type, $topLevelNamespace, $fileName . $type);
 
         $associatedFiles = $fileSpec->getAssociatedFiles();
-
-        $filePath = $fileSpec->getFilePath();
-        $content = $fileSpec->getFileContent($template);
-
-        $this->createFile($filePath, $content);
-
         $requestedType = $type;
 
         foreach ($associatedFiles as $file) {
-            $this->generateFile($file, $requestedType, $fileName);
+            $type = $this->fileSpecTypeService->getTypeFromFileName($file);
+
+            $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type);
+
+            $associatedFileName = (strpos($type, $requestedType) !== false)? $type:$requestedType . $type;
+            $associatedFileName = $fileName . $associatedFileName;
+
+            $this->generateFile($file, $type, $topLevelNamespace, $associatedFileName);
         }
     }
 
-    private function generateFile($file, $requestedType, $fileName)
+    private function generateFile($file, $type, $topLevelNamespace, $fileName)
     {
-        $type = $this->fileSpecTypeService->getTypeFromFileName($file);
-
-        $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type);
-
-        $associatedFileName = (strpos($type, $requestedType) !== false)? $type:$requestedType . $type;
-        $associatedFileName = $fileName . $associatedFileName;
-
         $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type);
 
         $fileSpec = new $file(
             $topLevelNamespace,
-            $associatedFileName,
+            $fileName,
             $rootDirectory
         );
 
@@ -71,6 +58,8 @@ class CreateFileService implements CreateFileInterface
         $content = $fileSpec->getFileContent($template);
 
         $this->createFile($filePath, $content);
+
+        return $fileSpec;
     }
 
     private function createFile($filePath, $content)

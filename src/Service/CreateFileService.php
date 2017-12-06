@@ -1,6 +1,8 @@
 <?php
 namespace Davework\Service;
 
+use Davework\FileSpec\FileSpecInterface;
+
 class CreateFileService implements CreateFileInterface
 {
     private $templateService;
@@ -11,15 +13,16 @@ class CreateFileService implements CreateFileInterface
      * @param TemplateService $templateService
      * @param FileSpecTypeService $fileSpecTypeService
      */
-    public function __construct(
-        TemplateService $templateService,
-        FileSpecTypeService $fileSpecTypeService
-    )
+    public function __construct(TemplateService $templateService, FileSpecTypeService $fileSpecTypeService)
     {
         $this->templateService = $templateService;
         $this->fileSpecTypeService = $fileSpecTypeService;
     }
 
+    /**
+     * @param $fileName
+     * @param $type
+     */
     public function create($fileName, $type)
     {
         $className = $this->getClassNameFromType($type);
@@ -30,18 +33,25 @@ class CreateFileService implements CreateFileInterface
         $associatedFiles = $fileSpec->getAssociatedFiles();
         $requestedType = $type;
 
-        foreach ($associatedFiles as $file) {
-            $type = $this->fileSpecTypeService->getTypeFromFileName($file);
+        foreach ($associatedFiles as $className) {
+            $type = $this->fileSpecTypeService->getTypeFromFileName($className);
 
             $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type);
 
             $associatedFileName = (strpos($type, $requestedType) !== false)? $type:$requestedType . $type;
             $associatedFileName = $fileName . $associatedFileName;
 
-            $this->generateFile($file, $type, $topLevelNamespace, $associatedFileName);
+            $this->generateFile($className, $type, $topLevelNamespace, $associatedFileName);
         }
     }
 
+    /**
+     * @param $file
+     * @param $type
+     * @param $topLevelNamespace
+     * @param $fileName
+     * @return FileSpecInterface mixed
+     */
     private function generateFile($file, $type, $topLevelNamespace, $fileName)
     {
         $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type);
@@ -62,6 +72,10 @@ class CreateFileService implements CreateFileInterface
         return $fileSpec;
     }
 
+    /**
+     * @param $filePath
+     * @param $content
+     */
     private function createFile($filePath, $content)
     {
         $handler = fopen($filePath, 'x+');
@@ -69,6 +83,10 @@ class CreateFileService implements CreateFileInterface
         fwrite($handler, $content);
     }
 
+    /**
+     * @param $type
+     * @return string
+     */
     private function getClassNameFromType($type)
     {
         return 'Davework\FileSpec\Slim\\' . $type . 'FileSpec';

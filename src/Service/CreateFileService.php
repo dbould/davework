@@ -1,24 +1,15 @@
 <?php
-
 namespace Davework\Service;
 
 class CreateFileService implements CreateFileInterface
 {
     private $templateService;
-    private $topLevelNamespace;
-    private $topLevelTestNamespace;
-    private $rootDirectory;
-    private $testRootDirectory;
     private $fileSpecTypeService;
 
     /**
      * CreateFileService constructor.
      * @param TemplateService $templateService
      * @param FileSpecTypeService $fileSpecTypeService
-     * @param $topLevelNamespace
-     * @param $topLevelTestNamespace
-     * @param $rootDirectory
-     * @param $testRootDirectory
      */
     public function __construct(
         TemplateService $templateService,

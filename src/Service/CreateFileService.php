@@ -26,9 +26,8 @@ class CreateFileService implements CreateFileInterface
     public function create($fileName, $type)
     {
         $className = $this->getClassNameFromType($type);
-        $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type);
 
-        $fileSpec = $this->generateFile($className, $type, $topLevelNamespace, $fileName . $type);
+        $fileSpec = $this->generateFile($className, $type, $fileName . $type);
 
         $associatedFiles = $fileSpec->getAssociatedFiles();
         $requestedType = $type;
@@ -36,27 +35,25 @@ class CreateFileService implements CreateFileInterface
         foreach ($associatedFiles as $className) {
             $type = $this->fileSpecTypeService->getTypeFromFileName($className);
 
-            $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type);
-
             $associatedFileName = (strpos($type, $requestedType) !== false)? $type:$requestedType . $type;
             $associatedFileName = $fileName . $associatedFileName;
 
-            $this->generateFile($className, $type, $topLevelNamespace, $associatedFileName);
+            $this->generateFile($className, $type, $associatedFileName);
         }
     }
 
     /**
-     * @param $file
+     * @param $className
      * @param $type
-     * @param $topLevelNamespace
      * @param $fileName
      * @return FileSpecInterface mixed
      */
-    private function generateFile($file, $type, $topLevelNamespace, $fileName)
+    private function generateFile($className, $type, $fileName)
     {
         $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type);
+        $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type);
 
-        $fileSpec = new $file(
+        $fileSpec = new $className(
             $topLevelNamespace,
             $fileName,
             $rootDirectory

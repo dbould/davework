@@ -1,14 +1,10 @@
 <?php
-$srcRoot = realpath(__DIR__);
-$buildRoot = realpath(__DIR__);
 
-$recursiveIterator = new RecursiveDirectoryIterator($srcRoot, FilesystemIterator::SKIP_DOTS);
+$buildRoot = __DIR__;
 
-$iterator = new RecursiveIteratorIterator(
-    $recursiveIterator,
-    RecursiveIteratorIterator::LEAVES_ONLY
-);
+$phar = new Phar($buildRoot . '/build/davework.phar', 0, 'davework.phar');
 
-$phar = new Phar($buildRoot . '/build/davework.phar', null, 'davework.phar');
-$phar->buildFromIterator($iterator, $srcRoot);
-$phar->setStub($phar->createDefaultStub("vendor/autoload.php"));
+$exclude = '/^(?=(.*src|.*bin|.*vendor|.*bootstrap))(?!(.*tests))(.*)$/i';
+
+$phar->buildFromDirectory($buildRoot, $exclude);
+$phar->setStub($phar->createDefaultStub("bin/davework"));

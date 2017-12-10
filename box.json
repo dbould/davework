@@ -13,6 +13,6 @@
     ],
     "git-version": "package_version",
     "main": "bin/davework",
-    "output": "davework.phar",
+    "output": "build/davework.phar",
     "stub": true
 }

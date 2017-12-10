@@ -15,7 +15,12 @@ require __DIR__ . '/src/middleware.php';
 require __DIR__ . '/src/routes.php';
 
 // Register Config
-$configJson = file_get_contents('davework.json');
+if (file_exists('davework.json')) {
+    $configJson = file_get_contents('davework.json');
+} else {
+    die("Couldn't find davework.json\n");
+}
+
 $projectRoot = pathinfo(realpath('davework.json'), PATHINFO_DIRNAME);
 $config = json_decode($configJson);
 $config->rootDirectory = $projectRoot . '/' . $config->rootDirectory;

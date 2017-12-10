@@ -22,7 +22,19 @@ class SlimTestCase extends PHPUnit_Framework_TestCase
 
             require __DIR__ . '/../bootstrap.php';
 
+            // Register Config
+            if (file_exists(__DIR__ . '/davework.json')) {
+                $configJson = file_get_contents(__DIR__ . '/davework.json');
+            } else {
+                die("Couldn't find davework.json\n");
+            }
+
+            $projectRoot = pathinfo(realpath(__DIR__ . '/davework.json'), PATHINFO_DIRNAME);
+            $config = json_decode($configJson);
+            $config->rootDirectory = $projectRoot . '/' . $config->rootDirectory;
+            $config->testsDirectory = $projectRoot . '/' . $config->testsDirectory;
             $this->container = $app->getContainer();
+            $this->container['config'] = $config;
         }
     }
 

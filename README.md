@@ -30,8 +30,3 @@ Generate through Box [https://github.com/box-project/box2](https://github.com/bo
 ```bash
 vendor/bin/box build -v
 ```
-
-Generate through custom PHAR build script
-```bash
-php create-phar.php
-```

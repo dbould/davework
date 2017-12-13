@@ -27,9 +27,10 @@ class CreateFileService implements CreateFileInterface
     {
         $className = $this->getClassNameFromType($type);
 
-        $fileSpec = $this->generateFile($className, $type, $fileName . $type);
+        $fileSpec = $this->generateFile($className, $type, $fileName . $type, substr($fileName . $type, 0, -4), 'Factory');
 
         $associatedFiles = $fileSpec->getAssociatedFiles();
+        $requestedName = $fileName . $type;
         $requestedType = $type;
 
         foreach ($associatedFiles as $className) {
@@ -38,7 +39,7 @@ class CreateFileService implements CreateFileInterface
             $associatedFileName = (strpos($type, $requestedType) !== false)? $type:$requestedType . $type;
             $associatedFileName = $fileName . $associatedFileName;
 
-            $this->generateFile($className, $type, $associatedFileName);
+            $this->generateFile($className, $type, $associatedFileName, $requestedName, $requestedType);
         }
     }
 
@@ -48,7 +49,7 @@ class CreateFileService implements CreateFileInterface
      * @param $fileName
      * @return FileSpecInterface mixed
      */
-    private function generateFile($className, $type, $fileName)
+    private function generateFile($className, $type, $fileName, $requestedName, $requestedType)
     {
         $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type);
         $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type);
@@ -56,7 +57,9 @@ class CreateFileService implements CreateFileInterface
         $fileSpec = new $className(
             $topLevelNamespace,
             $fileName,
-            $rootDirectory
+            $rootDirectory,
+            $requestedName,
+            $requestedType
         );
 
         $template = $this->templateService->getTemplate($type);

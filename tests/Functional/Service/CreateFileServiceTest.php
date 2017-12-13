@@ -259,4 +259,46 @@ TESTSERVICETEST;
 
         $this->assertEquals($expected, $actual);
     }
+
+    public function testItCreatesTestFactoryTestCorrectlyForServiceFile()
+    {
+        $fileNames = [
+            __DIR__ . '/../../TestFiles/src/Service/TestService.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Service/TestServiceTest.php',
+            __DIR__ . '/../../TestFiles/src/Factory/TestServiceFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Factory/TestServiceFactoryTest.php',
+        ];
+
+        foreach ($fileNames as $fileName) {
+            if (file_exists($fileName)) {
+                unlink($fileName);
+            }
+        }
+
+        $service = $this->getContainer()->get(CreateFileService::class);
+        $service->create('Test', 'Service');
+
+        $expected = <<<'TESTSERVICE'
+<?php
+namespace Tests\Functional\Factory;
+
+use Davework\Service\TestService;
+use Tests\SlimTestCase;
+
+class TestServiceFactoryTest extends SlimTestCase
+{
+    public function testItReturnsAnInstance()
+    {
+        $actual = $this->getContainer()->get(Davework\Service\TestService::class);
+
+        $this->assertInstanceOf(Davework\Service\TestService::class, $actual);
+    }
+}
+
+TESTSERVICE;
+
+        $actual = file_get_contents(__DIR__ . '/../../TestFiles/tests/Functional/Factory/TestServiceFactoryTest.php');
+
+        $this->assertEquals($expected, $actual);
+    }
 }

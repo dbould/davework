@@ -33,7 +33,6 @@ class FactoryTestFileSpec implements FileSpecInterface
 
     public function getFileContent($template)
     {
-        $classToTest = substr($this->requestedName, 0, -4);
         $classToTest = 'Davework\\' . $this->typeToTest . '\\' . $this->requestedName;
 
         return sprintf(

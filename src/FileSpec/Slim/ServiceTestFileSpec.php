@@ -9,14 +9,16 @@ class ServiceTestFileSpec implements FileSpecInterface
     private $className;
     private $filePath;
     private $associatedFiles;
+    private $requestedName;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath)
+    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName)
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Service';
         $this->className = $fileName;
         $this->filePath = $baseFilePath . '/Service/' . $fileName . '.php';
 
         $this->associatedFiles = [];
+        $this->requestedName = $requestedName;
     }
 
     public function getAssociatedFiles()
@@ -26,8 +28,7 @@ class ServiceTestFileSpec implements FileSpecInterface
 
     public function getFileContent($template)
     {
-        $classToTest = substr($this->className, 0, -4);
-        $classToTest = 'Davework\Service\\' . $classToTest;
+        $classToTest = 'Davework\Service\\' . $this->requestedName;
 
         return sprintf(
             $template,

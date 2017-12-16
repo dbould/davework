@@ -27,7 +27,13 @@ class CreateFileService implements CreateFileInterface
     {
         $className = $this->getClassNameFromType($type);
 
-        $fileSpec = $this->generateFile($className, $type, $fileName . $type, substr($fileName . $type, 0, -4), 'Factory');
+        $fileSpec = $this->generateFile(
+            $className,
+            $type,
+            $fileName . $type,
+            substr($fileName . $type, 0, -4),
+            'Factory'
+        );
 
         $associatedFiles = $fileSpec->getAssociatedFiles();
         $requestedName = $fileName . $type;

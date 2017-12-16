@@ -10,7 +10,7 @@ class ServiceFileSpec implements FileSpecInterface
     private $filePath;
     private $associatedFiles;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath)
+    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType)
     {
         $this->namespace = $topLevelNamespace . '\Service';
         $this->className = $fileName;

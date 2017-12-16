@@ -12,7 +12,7 @@ class FactoryFileSpec implements FileSpecInterface
     private $filePath;
     private $classToReturn;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath)
+    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType)
     {
         $this->namespace = $topLevelNamespace . '\Factory';
         $this->className = $fileName;

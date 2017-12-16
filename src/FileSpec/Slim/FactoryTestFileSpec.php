@@ -23,7 +23,12 @@ class FactoryTestFileSpec implements FileSpecInterface
         $this->typeToTest = $requestedType;
 
         $this->associatedFiles = [];
-        $this->requestedName = $requestedName;
+
+        if (substr($requestedName, -4) == 'Test') {
+            $this->requestedName = substr($requestedName, 0, -4);
+        } else {
+            $this->requestedName = $requestedName;
+        }
     }
 
     public function getAssociatedFiles()

@@ -31,7 +31,7 @@ class CreateFileService implements CreateFileInterface
             $className,
             $type,
             $fileName . $type,
-            substr($fileName . $type, 0, -4),
+            $fileName . $type,
             'Factory'
         );
 

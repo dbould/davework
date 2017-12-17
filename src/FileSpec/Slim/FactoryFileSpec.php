@@ -6,7 +6,6 @@ use Davework\FileSpec\FileSpecInterface;
 class FactoryFileSpec implements FileSpecInterface
 {
     private $namespace;
-    private $fileName;
     private $className;
     private $associatedFiles;
     private $filePath;

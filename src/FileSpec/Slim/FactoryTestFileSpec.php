@@ -10,9 +10,6 @@ class FactoryTestFileSpec implements FileSpecInterface
     private $filePath;
     private $associatedFiles;
     private $typeToTest;
-    /**
-     * @var
-     */
     private $requestedName;
 
     public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType)

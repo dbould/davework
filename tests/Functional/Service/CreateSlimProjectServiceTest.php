@@ -7,7 +7,7 @@ use Tests\SlimTestCase;
 
 class CreateSlimProjectServiceTest extends SlimTestCase
 {
-    public function test()
+    public function testSlimSkeletonGetsCloned()
     {
         $process = new Process('rm -rf ' . __DIR__ . '/../../TestFiles/project/slim-skeleton');
         $process->run();

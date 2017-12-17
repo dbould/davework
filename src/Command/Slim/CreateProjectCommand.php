@@ -2,6 +2,7 @@
 
 namespace Davework\Command\Slim;
 
+use Davework\Service\CreateSlimProjectService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
@@ -10,6 +11,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class CreateProjectCommand extends Command
 {
+    private $createSlimProjectService;
+
+    /**
+     * CreateProjectCommand constructor.
+     * @param CreateSlimProjectService $createSlimProjectService
+     */
+    public function __construct(CreateSlimProjectService $createSlimProjectService)
+    {
+        $this->createSlimProjectService = $createSlimProjectService;
+    }
+
     protected function configure()
     {
         $this->setName('slim:create-project')
@@ -23,6 +35,7 @@ class CreateProjectCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        //$this->createSlimProjectService->createProject();
         $output->write('HELLO WORLD');
     }
 }

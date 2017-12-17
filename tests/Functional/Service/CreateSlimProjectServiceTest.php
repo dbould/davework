@@ -27,7 +27,7 @@ class CreateSlimProjectServiceTest extends SlimTestCase
         }
 
         $actual = file_exists(__DIR__ . '/../../TestFiles/project/slim-skeleton/composer.json');
-        die();
+
         $newProcess = new Process('ls -la ' . __DIR__ . '/../../TestFiles/project');
         $newProcess->run();
 

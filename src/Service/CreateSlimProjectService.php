@@ -29,7 +29,7 @@ class CreateSlimProjectService
         }
 
         $process = new Process('ls -la' . __DIR__ . '/../../tests/TestFiles/Project/slim-skeleton');
-
+        $process->run();
         foreach ($process as $type => $data) {
             if ($process::OUT === $type) {
                 echo "\nRead from stdout: ".$data;

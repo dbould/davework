@@ -16,7 +16,7 @@ class CreateFileCommand extends Command
      * CreateFileCommand constructor.
      * @param CreateFileService $createFileService
      */
-    public function __construct($createFileService)
+    public function __construct(CreateFileService $createFileService)
     {
         parent::__construct();
 

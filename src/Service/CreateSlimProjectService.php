@@ -19,7 +19,5 @@ class CreateSlimProjectService
     public function createProject()
     {
         $this->process->run();
-        var_dump($this->process->getErrorOutput());
-        die();
     }
 }

@@ -20,6 +20,13 @@ class CreateSlimProjectServiceTest extends SlimTestCase
 
         $newProcess = new Process('ls -la ' . __DIR__ . '/../../TestFiles/project/slim-skeleton/composer.json');
         $newProcess->run();
+        foreach ($newProcess as $type => $data) {
+            if ($newProcess::OUT === $type) {
+                echo "\nRead from stdout: ".$data;
+            } else { // $process::ERR === $type
+                echo "\nRead from stderr: ".$data;
+            }
+        }
         die();
 
         $this->assertEquals(true, $actual);

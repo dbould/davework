@@ -20,7 +20,7 @@ class CreateProjectCommand extends Command
     public function __construct(CreateSlimProjectService $createSlimProjectService)
     {
         parent::__construct();
-        
+
         $this->createSlimProjectService = $createSlimProjectService;
     }
 

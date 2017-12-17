@@ -19,5 +19,15 @@ class CreateSlimProjectService
     public function createProject()
     {
         $this->process->run();
+
+        foreach ($this->process as $type => $data) {
+            if ($this->process::OUT === $type) {
+                echo "\nRead from stdout: ".$data;
+            } else { // $process::ERR === $type
+                echo "\nRead from stderr: ".$data;
+            }
+        }
+
+        die();
     }
 }

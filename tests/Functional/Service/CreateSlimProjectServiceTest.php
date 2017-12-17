@@ -20,6 +20,7 @@ class CreateSlimProjectServiceTest extends SlimTestCase
 
         $newProcess = new Process('ls -la ' . __DIR__ . '/../../TestFiles/project/slim-skeleton/composer.json');
         $newProcess->run();
+        die();
 
         $this->assertEquals(true, $actual);
 

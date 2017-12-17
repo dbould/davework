@@ -18,3 +18,4 @@ script:
   - rm -rf tests/TestFiles/Project/slim-skeleton
   - git clone https://github.com/slimphp/Slim-Skeleton.git tests/TestFiles/Project/slim-skeleton
   - ls -la tests/TestFiles/Project/slim-skeleton
+  - pwd

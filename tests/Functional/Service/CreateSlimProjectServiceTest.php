@@ -17,7 +17,8 @@ class CreateSlimProjectServiceTest extends SlimTestCase
         $service->createProject();
 
         $actual = file_exists(__DIR__ . '/../../TestFiles/project/slim-skeleton/composer.json');
-
+        var_dump(__DIR__ . '/../../tests/TestFiles/Project/slim-skeleton');
+        die();
         $this->assertEquals(true, $actual);
 
         $process->run();

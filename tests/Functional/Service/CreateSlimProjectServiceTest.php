@@ -16,7 +16,7 @@ class CreateSlimProjectServiceTest extends SlimTestCase
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
         $service->createProject();
 
-        $process2 = new Process('ls -la ' . __DIR__ . '/../../TestFiles/Project/slim-skeleton');
+        $process2 = new Process('chmod -R 777 ' . __DIR__ . '/../../TestFiles/Project/slim-skeleton');
         $process2->run();
         foreach ($process2 as $type => $data) {
             if ($process2::OUT === $type) {
@@ -25,10 +25,9 @@ class CreateSlimProjectServiceTest extends SlimTestCase
                 echo "\nRead from stderr: ".$data;
             }
         }
-        die();
 
         $actual = file_exists(__DIR__ . '/../../TestFiles/project/slim-skeleton/composer.json');
-
+        die();
         $newProcess = new Process('ls -la ' . __DIR__ . '/../../TestFiles/project');
         $newProcess->run();
 

@@ -17,3 +17,4 @@ script:
   - bash <(curl -s https://codecov.io/bash) -t 4c4ff856-cb27-4ccc-8f0e-d4c54914da6e
   - rm -rf tests/TestFiles/Project/slim-skeleton
   - git clone https://github.com/slimphp/Slim-Skeleton.git tests/TestFiles/Project/slim-skeleton
+  - ls -la tests/TestFiles/Project/slim-skeleton

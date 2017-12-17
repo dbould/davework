@@ -14,7 +14,7 @@ class CreateSlimProjectServiceFactory implements FactoryInterface
     public function __invoke(ContainerInterface $container)
     {
         $location = __DIR__ . '/../../tests/TestFiles/Project/slim-skeleton';
-        var_dump(__DIR__ . '/../../tests/TestFiles/Project/slim-skeleton');
+
         $process = new Process('git clone https://github.com/slimphp/Slim-Skeleton.git ' . $location);
 
         return new CreateSlimProjectService($process);

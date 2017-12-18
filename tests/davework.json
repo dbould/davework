@@ -3,5 +3,5 @@
     "rootDirectory":"TestFiles",
     "testNamespace":"Tests",
     "testsDirectory":"TestFiles/tests/Functional",
-    "newProjectDirectory":"tests/TestFiles/project/slim-skeleton"
+    "newProjectDirectory":"tests/TestFiles/project"
 }

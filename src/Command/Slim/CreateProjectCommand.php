@@ -37,7 +37,7 @@ class CreateProjectCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        //$this->createSlimProjectService->createProject();
-        $output->write('HELLO WORLD');
+        $this->createSlimProjectService->createProject();
+        $output->write('Project successfully created');
     }
 }

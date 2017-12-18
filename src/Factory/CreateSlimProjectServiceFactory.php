@@ -16,7 +16,7 @@ class CreateSlimProjectServiceFactory implements FactoryInterface
         if (isset($container->get('config')->newProjectDirectory)) {
             $location = $container->get('config')->newProjectDirectory;
         } else {
-            $location = $container->get('config')->rootDirectory;
+            $location = $container->get('config')->rootDirectory . '/slim-skeleton';
         }
 
         $process = new Process('git clone https://github.com/slimphp/Slim-Skeleton.git ' . $location);

@@ -41,6 +41,6 @@ class CreateSlimProjectServiceTest extends SlimTestCase
 
         $this->assertEquals(true, $actual);
 
-        //$process->run();
+        $process->run();
     }
 }

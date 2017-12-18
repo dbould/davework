@@ -53,4 +53,19 @@ class CreateProjectCommandTest extends SlimTestCase
 
         $process->run();
     }
+
+    public function testExecuteCommandWithNoParameters()
+    {
+
+    }
+
+    public function testExecuteCommandWithJustName()
+    {
+
+    }
+
+    public function testExecuteCommandWithJustLocation()
+    {
+
+    }
 }

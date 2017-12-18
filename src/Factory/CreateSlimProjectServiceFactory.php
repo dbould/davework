@@ -13,7 +13,11 @@ class CreateSlimProjectServiceFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container)
     {
-        $location = __DIR__ . '/../../tests/TestFiles/project/slim-skeleton';
+        if (isset($container->get('config')->newProjectDirectory)) {
+            $location = $container->get('config')->newProjectDirectory;
+        } else {
+            $location = $container->get('config')->rootDirectory;
+        }
 
         $process = new Process('git clone https://github.com/slimphp/Slim-Skeleton.git ' . $location);
 

@@ -2,5 +2,6 @@
     "topLevelNamespace":"Davework",
     "rootDirectory":"TestFiles",
     "testNamespace":"Tests",
-    "testsDirectory":"TestFiles/tests/Functional"
+    "testsDirectory":"TestFiles/tests/Functional",
+    "newProjectDirectory":"tests/TestFiles/project/slim-skeleton"
 }

@@ -16,16 +16,16 @@ class CreateProjectCommandTest extends SlimTestCase
         $command = new CreateProjectCommand($service);
         $commandTest = new CommandTester($command);
 
-        $commandTest->execute([]);
-
-        $process = new Process('rm -rf ' . __DIR__ . '/../../TestFiles/project/slim-skeleton');
+        $process = new Process('rm -rf ' . __DIR__ . '/../../TestFiles/project/moo-moo');
         $process->run();
 
-        /** @var CreateSlimProjectService $service */
-        $service = $this->getContainer()->get(CreateSlimProjectService::class);
-        $service->createProject();
+        $commandTest->execute([
+            'name' => 'moo-moo',
+            'location' => __DIR__ . '/../../TestFiles/project',
+        ]);
 
-        $actual = file_exists(__DIR__ . '/../../TestFiles/project/slim-skeleton/composer.json');
+
+        $actual = file_exists(__DIR__ . '/../../TestFiles/project/moo-moo/composer.json');
 
         $this->assertEquals(true, $actual);
 
@@ -39,10 +39,18 @@ class CreateProjectCommandTest extends SlimTestCase
         $command = new CreateProjectCommand($service);
         $commandTest = new CommandTester($command);
 
-        $commandTest->execute([]);
+        $process = new Process('rm -rf ' . __DIR__ . '/../../TestFiles/project/moo-moo');
+        $process->run();
+
+        $commandTest->execute([
+            'name' => 'moo-moo',
+            'location' => __DIR__ . '/../../TestFiles/project',
+        ]);
 
         $actual = $commandTest->getDisplay();
 
         $this->assertEquals('Project successfully created', $actual);
+
+        $process->run();
     }
 }

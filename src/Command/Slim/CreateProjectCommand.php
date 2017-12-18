@@ -4,10 +4,12 @@ namespace Davework\Command\Slim;
 
 use Davework\Service\CreateSlimProjectService;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Process\Process;
 
 class CreateProjectCommand extends Command
 {
@@ -29,15 +31,31 @@ class CreateProjectCommand extends Command
         $this->setName('slim:create-project')
              ->setDescription('Creates a new slim project from the skeleton app')
              ->setHelp('slim:create-project [project name]')
-             ->setDefinition(
-                 new InputDefinition([
-                     new InputOption('project-name', 'p', InputOption::VALUE_REQUIRED),
-                 ]));
+             ->addArgument('name', InputArgument::OPTIONAL, 'Project Name')
+             ->addArgument(
+                'location',
+                InputArgument::OPTIONAL,
+                'Which folder to create the project in');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->createSlimProjectService->createProject();
+        if ($input->getArgument('name') !== null) {
+            $projectName = '/' . $input->getArgument('name');
+        } else {
+            $projectName = '/slim-skeleton';
+        }
+
+        if ($input->getArgument('location') !== null) {
+            $location = $input->getArgument('location');
+        } else {
+            $location = './';
+        }
+
+        $process = new Process('git clone https://github.com/slimphp/Slim-Skeleton.git ' . $location . $projectName);
+        $process->run();
+
+        //$this->createSlimProjectService->createProject();
         $output->write('Project successfully created');
     }
 }

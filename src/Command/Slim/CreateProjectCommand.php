@@ -1,5 +1,4 @@
 <?php
-
 namespace Davework\Command\Slim;
 
 use Davework\Service\CreateSlimProjectService;
@@ -69,6 +68,9 @@ class CreateProjectCommand extends Command
             $location . '/src/Controller',
             $location . '/src/Factory',
             $location . '/src/Service',
+            $location . '/tests/Functional/Controller',
+            $location . '/tests/Functional/Factory',
+            $location . '/tests/Functional/Service',
         ];
 
         foreach ($directories as $directory) {

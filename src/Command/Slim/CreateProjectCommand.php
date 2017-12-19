@@ -58,6 +58,27 @@ class CreateProjectCommand extends Command
         $process = new Process('git clone https://github.com/slimphp/Slim-Skeleton.git ' . $location . $projectName);
         $process->run();
 
+        $this->createProjectDirectories($location . $projectName);
+
         $output->write('Project successfully created');
+    }
+
+    private function createProjectDirectories($location)
+    {
+        $directories = [
+            $location . '/src/Controller',
+            $location . '/src/Factory',
+            $location . '/src/Service',
+        ];
+
+        foreach ($directories as $directory) {
+            $this->createProjectDirectory($directory);
+        }
+    }
+
+    private function createProjectDirectory($directory)
+    {
+        $process = new Process('mkdir ' . $directory);
+        $process->run();
     }
 }

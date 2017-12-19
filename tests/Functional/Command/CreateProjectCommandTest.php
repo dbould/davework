@@ -96,6 +96,23 @@ class CreateProjectCommandTest extends SlimTestCase
 
     public function testExecuteCommandWithJustLocation()
     {
+        $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
+        $command = new CreateProjectCommand($service);
+        $commandTest = new CommandTester($command);
+
+        $process = new Process('rm -rf ' . __DIR__ . '/../../TestFiles/project/slim-skeleton');
+        $process->run();
+
+        $commandTest->execute([
+            'location' => __DIR__ . '/../../TestFiles/project',
+        ]);
+
+
+        $actual = file_exists(__DIR__ . '/../../TestFiles/project/slim-skeleton/composer.json');
+
+        $this->assertEquals(true, $actual);
+
+        $process->run();
     }
 }

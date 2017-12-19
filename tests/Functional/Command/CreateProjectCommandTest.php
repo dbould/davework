@@ -108,7 +108,6 @@ class CreateProjectCommandTest extends SlimTestCase
             'location' => __DIR__ . '/../../TestFiles/project',
         ]);
 
-
         $actual = file_exists(__DIR__ . '/../../TestFiles/project/slim-skeleton/composer.json');
 
         $this->assertEquals(true, $actual);

@@ -56,7 +56,21 @@ class CreateProjectCommandTest extends SlimTestCase
 
     public function testExecuteCommandWithNoParameters()
     {
+        $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
+        $command = new CreateProjectCommand($service);
+        $commandTest = new CommandTester($command);
+
+        $process = new Process('rm -rf ' . __DIR__ . '/../../../slim-skeleton');
+        $process->run();
+
+        $commandTest->execute([]);
+
+        $actual = file_exists(__DIR__ . '/../../../slim-skeleton/composer.json');
+
+        $this->assertEquals(true, $actual);
+
+        $process->run();
     }
 
     public function testExecuteCommandWithJustName()

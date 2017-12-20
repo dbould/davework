@@ -58,8 +58,31 @@ class CreateProjectCommand extends Command
         $process->run();
 
         $this->createProjectDirectories($location . $projectName);
+        $this->moveConfig($location . $projectName);
 
         $output->write('Project successfully created');
+    }
+
+    private function moveConfig($location)
+    {
+        $this->moveJson($location);
+        $this->movePhar($location);
+    }
+
+    private function moveJson($location)
+    {
+        if (file_exists('davework.json')) {
+            $process = new Process('mv davework.json ' . $location);
+            $process->run();
+        }
+    }
+
+    private function movePhar($location)
+    {
+        if (file_exists('davework.phar')) {
+            $process = new Process('mv davework.phar ' . $location);
+            $process->run();
+        }
     }
 
     private function createProjectDirectories($location)

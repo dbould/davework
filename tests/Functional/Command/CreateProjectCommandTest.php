@@ -245,4 +245,54 @@ class CreateProjectCommandTest extends SlimTestCase
 
         $process->run();
     }
+
+    public function testExecuteCommandMovesJsonToNewDirectory()
+    {
+        $service = $this->getContainer()->get(CreateSlimProjectService::class);
+
+        $command = new CreateProjectCommand($service);
+        $commandTest = new CommandTester($command);
+
+        $process = new Process('rm -rf ' . __DIR__ . '/../../TestFiles/project/moo-moo');
+        $process->run();
+
+        $process = new Process('touch ' . __DIR__ . 'davework.json');
+        $process->run();
+
+        $commandTest->execute([
+            'name' => 'moo-moo',
+            'location' => __DIR__ . '/../../TestFiles/project',
+        ]);
+
+        $actual = file_exists(__DIR__ . '/../../TestFiles/project/moo-moo/davework.json');
+
+        $this->assertEquals(true, $actual);
+
+        $process->run();
+    }
+
+    public function testExecuteCommandMovesPharToNewDirectory()
+    {
+        $service = $this->getContainer()->get(CreateSlimProjectService::class);
+
+        $command = new CreateProjectCommand($service);
+        $commandTest = new CommandTester($command);
+
+        $process = new Process('rm -rf ' . __DIR__ . '/../../TestFiles/project/moo-moo');
+        $process->run();
+
+        $process = new Process('touch ' . __DIR__ . 'davework.phar');
+        $process->run();
+
+        $commandTest->execute([
+            'name' => 'moo-moo',
+            'location' => __DIR__ . '/../../TestFiles/project',
+        ]);
+
+        $actual = file_exists(__DIR__ . '/../../TestFiles/project/moo-moo/davework.phar');
+
+        $this->assertEquals(true, $actual);
+
+        $process->run();
+    }
 }

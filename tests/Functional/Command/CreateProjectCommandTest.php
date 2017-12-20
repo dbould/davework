@@ -11,6 +11,16 @@ class CreateProjectCommandTest extends SlimTestCase
 {
     public function testExecuteCreatesSlimProject()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
+        if (!file_exists(__DIR__ . '/../../davework.json')) {
+            $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
+            $process->run();
+        }
+
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
         $command = new CreateProjectCommand($service);
@@ -29,10 +39,28 @@ class CreateProjectCommandTest extends SlimTestCase
         $this->assertEquals(true, $actual);
 
         $process->run();
+
+        if (file_exists(__DIR__ . '/../../davework.phar.bak')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar.bak '. __DIR__ . '/../../davework.phar');
+            $process->run();
+        }
+
+        $process = new Process('cp davework.json.example davework.json');
+        $process->run();
     }
 
     public function testExecuteCommandReturnsSuccessMessage()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
+        if (!file_exists(__DIR__ . '/../../davework.json')) {
+            $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
+            $process->run();
+        }
+
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
         $command = new CreateProjectCommand($service);
@@ -51,10 +79,23 @@ class CreateProjectCommandTest extends SlimTestCase
         $this->assertEquals('Project successfully created', $actual);
 
         $process->run();
+
+        $process = new Process('cp davework.json.example davework.json');
+        $process->run();
     }
 
     public function testExecuteCommandWithNoParameters()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
+        if (!file_exists(__DIR__ . '/../../davework.json')) {
+            $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
+            $process->run();
+        }
+
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
         $command = new CreateProjectCommand($service);
@@ -70,10 +111,23 @@ class CreateProjectCommandTest extends SlimTestCase
         $this->assertEquals(true, $actual);
 
         $process->run();
+
+        $process = new Process('cp davework.json.example davework.json');
+        $process->run();
     }
 
     public function testExecuteCommandWithJustName()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
+        if (!file_exists(__DIR__ . '/../../davework.json')) {
+            $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
+            $process->run();
+        }
+
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
         $command = new CreateProjectCommand($service);
@@ -91,10 +145,23 @@ class CreateProjectCommandTest extends SlimTestCase
         $this->assertEquals(true, $actual);
 
         $process->run();
+
+        $process = new Process('cp davework.json.example davework.json');
+        $process->run();
     }
 
     public function testExecuteCommandWithJustLocation()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
+        if (!file_exists(__DIR__ . '/../../davework.json')) {
+            $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
+            $process->run();
+        }
+
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
         $command = new CreateProjectCommand($service);
@@ -112,10 +179,23 @@ class CreateProjectCommandTest extends SlimTestCase
         $this->assertEquals(true, $actual);
 
         $process->run();
+
+        $process = new Process('cp davework.json.example davework.json');
+        $process->run();
     }
 
     public function testExecuteCommandCreatesProjectFactoryController()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
+        if (!file_exists(__DIR__ . '/../../davework.json')) {
+            $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
+            $process->run();
+        }
+
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
         $command = new CreateProjectCommand($service);
@@ -134,10 +214,23 @@ class CreateProjectCommandTest extends SlimTestCase
         $this->assertEquals(true, $actual);
 
         $process->run();
+
+        $process = new Process('cp davework.json.example davework.json');
+        $process->run();
     }
 
     public function testExecuteCommandCreatesProjectFactoryFolder()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
+        if (!file_exists(__DIR__ . '/../../davework.json')) {
+            $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
+            $process->run();
+        }
+
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
         $command = new CreateProjectCommand($service);
@@ -156,10 +249,23 @@ class CreateProjectCommandTest extends SlimTestCase
         $this->assertEquals(true, $actual);
 
         $process->run();
+
+        $process = new Process('cp davework.json.example davework.json');
+        $process->run();
     }
 
     public function testExecuteCommandCreatesProjectServiceFolder()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
+        if (!file_exists(__DIR__ . '/../../davework.json')) {
+            $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
+            $process->run();
+        }
+
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
         $command = new CreateProjectCommand($service);
@@ -178,10 +284,23 @@ class CreateProjectCommandTest extends SlimTestCase
         $this->assertEquals(true, $actual);
 
         $process->run();
+
+        $process = new Process('cp davework.json.example davework.json');
+        $process->run();
     }
 
     public function testExecuteCommandCreatesProjectControllerTestFolder()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
+        if (!file_exists(__DIR__ . '/../../davework.json')) {
+            $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
+            $process->run();
+        }
+
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
         $command = new CreateProjectCommand($service);
@@ -200,10 +319,23 @@ class CreateProjectCommandTest extends SlimTestCase
         $this->assertEquals(true, $actual);
 
         $process->run();
+
+        $process = new Process('cp davework.json.example davework.json');
+        $process->run();
     }
 
     public function testExecuteCommandCreatesProjectFactoryTestFolder()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
+        if (!file_exists(__DIR__ . '/../../davework.json')) {
+            $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
+            $process->run();
+        }
+
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
         $command = new CreateProjectCommand($service);
@@ -222,10 +354,23 @@ class CreateProjectCommandTest extends SlimTestCase
         $this->assertEquals(true, $actual);
 
         $process->run();
+
+        $process = new Process('cp davework.json.example davework.json');
+        $process->run();
     }
 
     public function testExecuteCommandCreatesProjectServiceTestFolder()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
+        if (!file_exists(__DIR__ . '/../../davework.json')) {
+            $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
+            $process->run();
+        }
+
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
         $command = new CreateProjectCommand($service);
@@ -244,10 +389,23 @@ class CreateProjectCommandTest extends SlimTestCase
         $this->assertEquals(true, $actual);
 
         $process->run();
+
+        $process = new Process('cp davework.json.example davework.json');
+        $process->run();
     }
 
     public function testExecuteCommandMovesJsonToNewDirectory()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
+        if (!file_exists(__DIR__ . '/../../davework.json')) {
+            $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
+            $process->run();
+        }
+
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
         $command = new CreateProjectCommand($service);
@@ -269,10 +427,23 @@ class CreateProjectCommandTest extends SlimTestCase
         $this->assertEquals(true, $actual);
 
         $process->run();
+
+        $process = new Process('cp davework.json.example davework.json');
+        $process->run();
     }
 
     public function testExecuteCommandMovesPharToNewDirectory()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
+        if (!file_exists(__DIR__ . '/../../davework.json')) {
+            $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
+            $process->run();
+        }
+
         $service = $this->getContainer()->get(CreateSlimProjectService::class);
 
         $command = new CreateProjectCommand($service);
@@ -293,6 +464,9 @@ class CreateProjectCommandTest extends SlimTestCase
 
         $this->assertEquals(true, $actual);
 
+        $process->run();
+
+        $process = new Process('cp davework.json.example davework.json');
         $process->run();
     }
 }

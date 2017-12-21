@@ -10,17 +10,12 @@ use Symfony\Component\Process\Process;
 
 class CreateProjectCommand extends Command
 {
-    private $createSlimProjectService;
-
     /**
      * CreateProjectCommand constructor.
-     * @param CreateSlimProjectService $createSlimProjectService
      */
-    public function __construct(CreateSlimProjectService $createSlimProjectService)
+    public function __construct()
     {
         parent::__construct();
-
-        $this->createSlimProjectService = $createSlimProjectService;
     }
 
     protected function configure()

@@ -439,6 +439,9 @@ class CreateProjectCommandTest extends SlimTestCase
             $process->run();
         }
 
+        $process = new Process('touch ' . __DIR__ . '/../../davework.phar');
+        $process->run();
+
         if (!file_exists(__DIR__ . '/../../davework.json')) {
             $process = new Process('cp ' . __DIR__ . '/../../davework.json.example ' . __DIR__ . '/../../davework.json');
             $process->run();
@@ -452,7 +455,7 @@ class CreateProjectCommandTest extends SlimTestCase
         $process = new Process('rm -rf ' . __DIR__ . '/../../TestFiles/project/moo-moo');
         $process->run();
 
-        $process = new Process('touch ' . __DIR__ . 'davework.phar');
+        $process = new Process('touch ' . __DIR__ . '/../../../davework.phar');
         $process->run();
 
         $commandTest->execute([
@@ -463,6 +466,9 @@ class CreateProjectCommandTest extends SlimTestCase
         $actual = file_exists(__DIR__ . '/../../TestFiles/project/moo-moo/davework.phar');
 
         $this->assertEquals(true, $actual);
+
+        $process = new Process('rm -f ' . __DIR__ . '/../../davework.phar');
+        $process->run();
 
         $process->run();
 

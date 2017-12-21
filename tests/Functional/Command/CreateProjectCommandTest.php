@@ -12,6 +12,11 @@ class CreateProjectCommandTest extends SlimTestCase
 
     public static function setUpBeforeClass()
     {
+        if (file_exists(__DIR__ . '/../../davework.phar')) {
+            $process = new Process('mv ' . __DIR__ . '/../../davework.phar '. __DIR__ . '/../../davework.phar.bak');
+            $process->run();
+        }
+
         $command = new CreateProjectCommand();
         $commandTest = new CommandTester($command);
 

@@ -30,4 +30,3 @@ $container['logger'] = function ($c) {
 $container[CreateFileService::class] = new CreateFileServiceFactory($container);
 $container[TemplateService::class] = new TemplateServiceFactory($container);
 $container[FileSpecTypeService::class] = new FileSpecTypeServiceFactory($container);
-$container[CreateSlimProjectService::class] = new CreateSlimProjectServiceFactory($container);

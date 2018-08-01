@@ -2,11 +2,11 @@
 // DIC configuration
 
 use Davework\Factory\CreateFileServiceFactory;
-use Davework\Factory\CreateSlimProjectServiceFactory;
+//use Davework\Factory\CreateSlimProjectServiceFactory;
 use Davework\Factory\FileSpecTypeServiceFactory;
 use Davework\Factory\TemplateServiceFactory;
 use Davework\Service\CreateFileService;
-use Davework\Service\CreateSlimProjectService;
+//use Davework\Service\CreateSlimProjectService;
 use Davework\Service\FileSpecTypeService;
 use Davework\Service\TemplateService;
 

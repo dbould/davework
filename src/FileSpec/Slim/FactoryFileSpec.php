@@ -11,11 +11,14 @@ class FactoryFileSpec implements FileSpecInterface
     private $filePath;
     private $classToReturn;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType)
+    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module)
     {
         $this->namespace = $topLevelNamespace . '\Factory';
         $this->className = $fileName;
-        $this->filePath = $baseFilePath . '/src/Factory/' . $fileName . '.php';
+
+        $modulePath = !is_null($module) ? $module . '/' : '';
+        $this->filePath = $baseFilePath . '/src/' . $modulePath . 'Factory/' . $fileName . '.php';
+
         $this->classToReturn = str_replace('Factory', '', $fileName);
 
         $this->associatedFiles = [

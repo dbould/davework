@@ -12,11 +12,14 @@ class FactoryTestFileSpec implements FileSpecInterface
     private $typeToTest;
     private $requestedName;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType)
+    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module)
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Factory';
         $this->className = $fileName;
-        $this->filePath = $baseFilePath . '/Factory/' . $fileName . '.php';
+
+        $modulePath = !is_null($module) ? '/' . $module : '';
+        $this->filePath = $baseFilePath . $modulePath . '/Factory/' . $fileName . '.php';
+
         $this->typeToTest = $requestedType;
 
         $this->associatedFiles = [];

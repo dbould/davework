@@ -10,11 +10,13 @@ class ControllerTestFileSpec implements FileSpecInterface
     private $filePath;
     private $associatedFiles;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType)
+    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module)
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Controller';
         $this->className = $fileName;
-        $this->filePath = $baseFilePath . '/Controller/' . $fileName . '.php';
+
+        $modulePath = !is_null($module) ? '/' . $module : '';
+        $this->filePath = $baseFilePath . $modulePath . '/Controller/' . $fileName . '.php';
 
         $this->associatedFiles = [];
     }

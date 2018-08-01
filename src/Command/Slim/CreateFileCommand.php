@@ -32,14 +32,19 @@ class CreateFileCommand extends Command
              ->addArgument(
                  'type',
                  InputArgument::REQUIRED,
-                 'File type to create: controller | service');
+                 'File type to create: controller | service')
+              ->addArgument(
+                 'module',
+                 InputArgument::OPTIONAL,
+                 'Module name - subfolder to src/');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->createFileService->create(
             $input->getArgument('file-name'),
-            $input->getArgument('type')
+            $input->getArgument('type'),
+            $input->getArgument('module')
         );
 
         $output->write('File created');

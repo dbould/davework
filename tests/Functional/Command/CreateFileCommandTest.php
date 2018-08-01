@@ -183,4 +183,47 @@ TESTSERVICE;
 
         $this->assertEquals($expected, $actual);
     }
+
+    public function testExecuteCreatesServiceFileToModule()
+    {
+        $fileNames = [
+            __DIR__ . '/../../TestFiles/src/Field/Service/MooMooService.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Field/Service/MooMooServiceTest.php',
+            __DIR__ . '/../../TestFiles/src/Field/Factory/MooMooServiceFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Field/Functional/Factory/MooMooServiceFactoryTest.php',
+        ];
+
+        foreach ($fileNames as $fileName) {
+            if (file_exists($fileName)) {
+                unlink($fileName);
+            }
+        }
+
+        $command = new CreateFileCommand($this->getContainer()->get(CreateFileService::class));
+        $commandTest = new CommandTester($command);
+
+        $commandTest->execute([
+            'file-name' => 'MooMoo',
+            'type' => 'Service',
+            'module' => 'Field',
+        ]);
+
+        $actual = file_get_contents($fileNames[0]);
+
+        $expected = <<<'TESTSERVICE'
+<?php
+namespace Davework\Service;
+
+class MooMooService
+{
+    public function __construct()
+    {
+        
+    }
+}
+
+TESTSERVICE;
+
+        $this->assertEquals($expected, $actual);
+    }
 }

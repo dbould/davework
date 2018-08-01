@@ -33,6 +33,11 @@ class SlimTestCase extends PHPUnit_Framework_TestCase
             $config = json_decode($configJson);
             $config->rootDirectory = $projectRoot . '/' . $config->rootDirectory;
             $config->testsDirectory = $projectRoot . '/' . $config->testsDirectory;
+
+            if (!isset($config->factoriesLiveWithClasses)) {
+                $config->factoriesLiveWithClasses = false;
+            }
+
             $this->container = $app->getContainer();
             $this->container['config'] = $config;
         }

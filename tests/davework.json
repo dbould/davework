@@ -3,5 +3,6 @@
     "rootDirectory":"TestFiles",
     "testNamespace":"Tests",
     "testsDirectory":"TestFiles/tests/Functional",
-    "newProjectDirectory":"tests/TestFiles/project"
+    "newProjectDirectory":"tests/TestFiles/project",
+    "factoriesLiveWithClasses":false
 }

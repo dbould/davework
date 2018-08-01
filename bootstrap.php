@@ -26,6 +26,10 @@ $config = json_decode($configJson);
 $config->rootDirectory = $projectRoot . '/' . $config->rootDirectory;
 $config->testsDirectory = $projectRoot . '/' . $config->testsDirectory;
 
+if (!isset($config->factoriesLiveWithClasses)) {
+    $config->factoriesLiveWithClasses = false;
+}
+
 if (isset($config->newProjectDirectory)) {
     $newProjectDirectory = $config->newProjectDirectory;
 } else {

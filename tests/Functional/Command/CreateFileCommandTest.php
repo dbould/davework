@@ -190,7 +190,7 @@ TESTSERVICE;
             __DIR__ . '/../../TestFiles/src/Field/Service/MooMooService.php',
             __DIR__ . '/../../TestFiles/tests/Functional/Field/Service/MooMooServiceTest.php',
             __DIR__ . '/../../TestFiles/src/Field/Factory/MooMooServiceFactory.php',
-            __DIR__ . '/../../TestFiles/tests/Field/Functional/Factory/MooMooServiceFactoryTest.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Field/Factory/MooMooServiceFactoryTest.php',
         ];
 
         foreach ($fileNames as $fileName) {

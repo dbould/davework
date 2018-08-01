@@ -329,4 +329,30 @@ TESTSERVICE;
 
         $this->assertFileExists(__DIR__ . '/../../TestFiles/tests/Functional/Service/TestServiceTest.php');
     }
+
+    public function testItCreatesTestFactoryCorrectlyWhenFactoriesLiveWithFiles()
+    {
+        $fileNames = [
+            __DIR__ . '/../../TestFiles/src/Service/TestService.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Service/TestServiceTest.php',
+            __DIR__ . '/../../TestFiles/src/Service/TestServiceFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Service/TestServiceFactoryTest.php',
+        ];
+
+        foreach ($fileNames as $fileName) {
+            if (file_exists($fileName)) {
+                unlink($fileName);
+            }
+        }
+
+        $service = new CreateFileService(
+            $this->getContainer()->get(TemplateService::class),
+            $this->getContainer()->get(FileSpecTypeService::class),
+            true
+        );
+        $service->create('Test', 'Service');
+
+
+        $this->assertFileExists(__DIR__ . '/../../TestFiles/src/Service/TestServiceFactory.php');
+    }
 }

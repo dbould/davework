@@ -30,8 +30,6 @@ if (!isset($config->factoriesLiveWithClasses)) {
     $config->factoriesLiveWithClasses = false;
 }
 
-var_dump($config);die();
-
 if (isset($config->newProjectDirectory)) {
     $newProjectDirectory = $config->newProjectDirectory;
 } else {

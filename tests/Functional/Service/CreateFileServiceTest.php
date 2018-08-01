@@ -3,6 +3,8 @@
 namespace Tests\Functional\Service;
 
 use Davework\Service\CreateFileService;
+use Davework\Service\FileSpecTypeService;
+use Davework\Service\TemplateService;
 use Tests\SlimTestCase;
 
 class CreateFileServiceTest extends SlimTestCase
@@ -300,5 +302,31 @@ TESTSERVICE;
         $actual = file_get_contents(__DIR__ . '/../../TestFiles/tests/Functional/Factory/TestServiceFactoryTest.php');
 
         $this->assertEquals($expected, $actual);
+    }
+
+    public function testItCreatesTestFactoryTestCorrectlyWhenFactoriesLiveWithFiles()
+    {
+        $fileNames = [
+            __DIR__ . '/../../TestFiles/src/Service/TestService.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Service/TestServiceTest.php',
+            __DIR__ . '/../../TestFiles/src/Service/TestServiceFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Service/TestServiceFactoryTest.php',
+        ];
+
+        foreach ($fileNames as $fileName) {
+            if (file_exists($fileName)) {
+                unlink($fileName);
+            }
+        }
+
+        $service = new CreateFileService(
+                $this->getContainer()->get(TemplateService::class),
+                $this->getContainer()->get(FileSpecTypeService::class),
+                true
+            );
+        $service->create('Test', 'Service');
+
+
+        $this->assertFileExists(__DIR__ . '/../../TestFiles/tests/Functional/Service/TestServiceTest.php');
     }
 }

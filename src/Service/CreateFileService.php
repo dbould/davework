@@ -7,16 +7,18 @@ class CreateFileService implements CreateFileInterface
 {
     private $templateService;
     private $fileSpecTypeService;
+    private $factoriesLiveWithClasses;
 
     /**
      * CreateFileService constructor.
      * @param TemplateService $templateService
      * @param FileSpecTypeService $fileSpecTypeService
      */
-    public function __construct(TemplateService $templateService, FileSpecTypeService $fileSpecTypeService)
+    public function __construct(TemplateService $templateService, FileSpecTypeService $fileSpecTypeService, $factoriesLiveWithClasses)
     {
         $this->templateService = $templateService;
         $this->fileSpecTypeService = $fileSpecTypeService;
+        $this->factoriesLiveWithClasses = $factoriesLiveWithClasses;
     }
 
     /**
@@ -67,7 +69,8 @@ class CreateFileService implements CreateFileInterface
             $rootDirectory,
             $requestedName,
             $requestedType,
-            $module
+            $module,
+            $this->factoriesLiveWithClasses
         );
 
         $template = $this->templateService->getTemplate($type);

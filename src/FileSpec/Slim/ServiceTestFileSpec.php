@@ -11,7 +11,7 @@ class ServiceTestFileSpec implements FileSpecInterface
     private $associatedFiles;
     private $requestedName;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module)
+    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module, $factoriesLiveWithClasses)
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Service';
         $this->className = $fileName;

@@ -13,10 +13,12 @@ class CreateFileServiceFactory implements FactoryInterface
     {
         $templateService = $container->get(TemplateService::class);
         $fileSpecTypeService = $container->get(FileSpecTypeService::class);
+        $factoriesLiveWithClasses = $container->get('config')->factoriesLiveWithClasses;
 
         return new CreateFileService(
             $templateService,
-            $fileSpecTypeService
+            $fileSpecTypeService,
+            $factoriesLiveWithClasses
         );
     }
 }

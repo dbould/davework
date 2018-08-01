@@ -10,7 +10,7 @@ class ControllerTestFileSpec implements FileSpecInterface
     private $filePath;
     private $associatedFiles;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module)
+    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module, $factoriesLiveWithClasses)
     {
         $this->topLevelNamespace = $topLevelNamespace . '\Functional\Controller';
         $this->className = $fileName;

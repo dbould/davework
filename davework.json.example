@@ -2,5 +2,6 @@
     "topLevelNamespace":"Davework",
     "rootDirectory":"tests/TestFiles",
     "testNamespace":"Tests",
-    "testsDirectory":"tests/TestFiles/tests/Functional"
+    "testsDirectory":"tests/TestFiles/tests/Functional",
+    "factoriesLiveWithClasses":false
 }

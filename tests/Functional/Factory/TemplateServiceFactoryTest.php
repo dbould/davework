@@ -2,7 +2,7 @@
 
 namespace Tests\Functional\Factory;
 
-use Davework\Service\TemplateService;
+use Dbould\Davework\Service\TemplateService;
 use Tests\SlimTestCase;
 
 class TemplateServiceFactoryTest extends SlimTestCase

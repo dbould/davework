@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Functional\Service;
 
-use Davework\Service\FileSpecTypeService;
+use Dbould\Davework\Service\FileSpecTypeService;
 use Tests\SlimTestCase;
 
 class FileSpecTypeServiceTest extends SlimTestCase

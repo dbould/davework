@@ -2,9 +2,9 @@
 
 namespace Tests\Functional\Service;
 
-use Davework\Service\CreateFileService;
-use Davework\Service\FileSpecTypeService;
-use Davework\Service\TemplateService;
+use Dbould\Davework\Service\CreateFileService;
+use Dbould\Davework\Service\FileSpecTypeService;
+use Dbould\Davework\Service\TemplateService;
 use Tests\SlimTestCase;
 
 class CreateFileServiceTest extends SlimTestCase
@@ -30,7 +30,7 @@ class CreateFileServiceTest extends SlimTestCase
 
         $expected = <<<'TESTCONTROLLER'
 <?php
-namespace Davework\Controller;
+namespace Dbould\Davework\Controller;
 
 class TestController
 {
@@ -103,7 +103,7 @@ TESTCONTROLLERTEST;
 
         $expected = <<<'TESTFACTORY'
 <?php
-namespace Davework\Factory;
+namespace Dbould\Davework\Factory;
 
 class TestFactory
 {
@@ -135,16 +135,16 @@ TESTFACTORY;
 <?php
 namespace Tests\Functional\Factory;
 
-use Davework\Factory\TestFactory;
+use Dbould\Davework\Factory\TestFactory;
 use Tests\SlimTestCase;
 
 class TestFactoryTest extends SlimTestCase
 {
     public function testItReturnsAnInstance()
     {
-        $actual = $this->getContainer()->get(Davework\Factory\TestFactory::class);
+        $actual = $this->getContainer()->get(Dbould\Davework\Factory\TestFactory::class);
 
-        $this->assertInstanceOf(Davework\Factory\TestFactory::class, $actual);
+        $this->assertInstanceOf(Dbould\Davework\Factory\TestFactory::class, $actual);
     }
 }
 
@@ -175,7 +175,7 @@ TESTFACTORYTEST;
 
         $expected = <<<'TESTSERVICE'
 <?php
-namespace Davework\Service;
+namespace Dbould\Davework\Service;
 
 class TestService
 {
@@ -212,7 +212,7 @@ TESTSERVICE;
 
         $expected = <<<'TESTSERVICE'
 <?php
-namespace Davework\Service;
+namespace Dbould\Davework\Service;
 
 class TestService
 {
@@ -244,7 +244,7 @@ TESTSERVICE;
 <?php
 namespace Tests\Functional\Service;
 
-use Davework\Service\TestService;
+use Dbould\Davework\Service\TestService;
 use Tests\SlimTestCase;
 
 class TestServiceTest extends SlimTestCase
@@ -284,16 +284,16 @@ TESTSERVICETEST;
 <?php
 namespace Tests\Functional\Factory;
 
-use Davework\Service\TestService;
+use Dbould\Davework\Service\TestService;
 use Tests\SlimTestCase;
 
 class TestServiceFactoryTest extends SlimTestCase
 {
     public function testItReturnsAnInstance()
     {
-        $actual = $this->getContainer()->get(Davework\Service\TestService::class);
+        $actual = $this->getContainer()->get(Dbould\Davework\Service\TestService::class);
 
-        $this->assertInstanceOf(Davework\Service\TestService::class, $actual);
+        $this->assertInstanceOf(Dbould\Davework\Service\TestService::class, $actual);
     }
 }
 

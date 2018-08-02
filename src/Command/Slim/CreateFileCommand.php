@@ -1,8 +1,7 @@
 <?php
+namespace Dbould\Davework\Command\Slim;
 
-namespace Davework\Command\Slim;
-
-use Davework\Service\CreateFileService;
+use Dbould\Davework\Service\CreateFileService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

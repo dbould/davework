@@ -2,10 +2,10 @@
 <?php
 require_once __DIR__ . '/../bootstrap.php';
 
-use Davework\Command\Slim\CreateFileCommand;
-//use Davework\Command\Slim\CreateProjectCommand;
-use Davework\Service\CreateFileService;
-//use Davework\Service\CreateSlimProjectService;
+use Dbould\Davework\Command\Slim\CreateFileCommand;
+//use Dbould\Davework\Command\Slim\CreateProjectCommand;
+use Dbould\Davework\Service\CreateFileService;
+//use Dbould\Davework\Service\CreateSlimProjectService;
 use Symfony\Component\Console\Application;
 
 $application = new Application();

@@ -1,7 +1,7 @@
 <?php
-namespace Davework\Service;
+namespace Dbould\Davework\Service;
 
-use Davework\FileSpec\FileSpecInterface;
+use Dbould\Davework\FileSpec\FileSpecInterface;
 
 class CreateFileService implements CreateFileInterface
 {
@@ -100,6 +100,6 @@ class CreateFileService implements CreateFileInterface
      */
     private function getClassNameFromType($type)
     {
-        return 'Davework\FileSpec\Slim\\' . $type . 'FileSpec';
+        return 'Dbould\Davework\FileSpec\Slim\\' . $type . 'FileSpec';
     }
 }

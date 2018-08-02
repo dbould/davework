@@ -2,7 +2,7 @@
 
 namespace Tests\Functional\Factory;
 
-use Davework\Service\CreateFileService;
+use Dbould\Davework\Service\CreateFileService;
 use Tests\SlimTestCase;
 
 class CreateFileServiceFactoryTest extends SlimTestCase

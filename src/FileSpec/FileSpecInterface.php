@@ -1,6 +1,6 @@
 <?php
 
-namespace Davework\FileSpec;
+namespace Dbould\Davework\FileSpec;
 
 interface FileSpecInterface
 {

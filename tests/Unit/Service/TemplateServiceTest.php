@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Service;
 
-use Davework\Service\TemplateService;
+use Dbould\Davework\Service\TemplateService;
 use Tests\SlimTestCase;
 
 class TemplateServiceTest extends SlimTestCase

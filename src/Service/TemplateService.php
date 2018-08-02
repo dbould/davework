@@ -1,6 +1,6 @@
 <?php
 
-namespace Davework\Service;
+namespace Dbould\Davework\Service;
 
 class TemplateService
 {

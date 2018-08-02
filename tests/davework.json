@@ -1,5 +1,5 @@
 {
-    "topLevelNamespace":"Davework",
+    "topLevelNamespace":"Dbould\\Davework",
     "rootDirectory":"TestFiles",
     "testNamespace":"Tests",
     "testsDirectory":"TestFiles/tests/Functional",

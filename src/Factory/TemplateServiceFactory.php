@@ -1,8 +1,8 @@
 <?php
 
-namespace Davework\Factory;
+namespace Dbould\Davework\Factory;
 
-use Davework\Service\TemplateService;
+use Dbould\Davework\Service\TemplateService;
 use Psr\Container\ContainerInterface;
 
 class TemplateServiceFactory implements FactoryInterface

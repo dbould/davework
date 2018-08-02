@@ -1,8 +1,8 @@
 <?php
 namespace Tests\Functional\Command;
 
-use Davework\Command\Slim\CreateFileCommand;
-use Davework\Service\CreateFileService;
+use Dbould\Davework\Command\Slim\CreateFileCommand;
+use Dbould\Davework\Service\CreateFileService;
 use Symfony\Component\Console\Tester\CommandTester;
 use Tests\SlimTestCase;
 
@@ -35,7 +35,7 @@ class CreateFileCommandTest extends SlimTestCase
 
         $expected = <<<'TESTSERVICE'
 <?php
-namespace Davework\Service;
+namespace Dbould\Davework\Service;
 
 class MooMooService
 {
@@ -79,7 +79,7 @@ TESTSERVICE;
 <?php
 namespace Tests\Functional\Service;
 
-use Davework\Service\MooMooService;
+use Dbould\Davework\Service\MooMooService;
 use Tests\SlimTestCase;
 
 class MooMooServiceTest extends SlimTestCase
@@ -122,7 +122,7 @@ TESTSERVICE;
 
         $expected = <<<'TESTSERVICE'
 <?php
-namespace Davework\Factory;
+namespace Dbould\Davework\Factory;
 
 class MooMooServiceFactory
 {
@@ -166,16 +166,16 @@ TESTSERVICE;
 <?php
 namespace Tests\Functional\Factory;
 
-use Davework\Service\MooMooService;
+use Dbould\Davework\Service\MooMooService;
 use Tests\SlimTestCase;
 
 class MooMooServiceFactoryTest extends SlimTestCase
 {
     public function testItReturnsAnInstance()
     {
-        $actual = $this->getContainer()->get(Davework\Service\MooMooService::class);
+        $actual = $this->getContainer()->get(Dbould\Davework\Service\MooMooService::class);
 
-        $this->assertInstanceOf(Davework\Service\MooMooService::class, $actual);
+        $this->assertInstanceOf(Dbould\Davework\Service\MooMooService::class, $actual);
     }
 }
 
@@ -212,7 +212,7 @@ TESTSERVICE;
 
         $expected = <<<'TESTSERVICE'
 <?php
-namespace Davework\Service;
+namespace Dbould\Davework\Service;
 
 class MooMooService
 {

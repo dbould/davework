@@ -1,8 +1,8 @@
 <?php
 
-namespace Davework\Factory;
+namespace Dbould\Davework\Factory;
 
-use Davework\Service\FileSpecTypeService;
+use Dbould\Davework\Service\FileSpecTypeService;
 use Psr\Container\ContainerInterface;
 
 class FileSpecTypeServiceFactory implements FactoryInterface

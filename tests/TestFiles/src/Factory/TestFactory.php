@@ -1,5 +1,5 @@
 <?php
-namespace Davework\Factory;
+namespace Dbould\Davework\Factory;
 
 class TestFactory
 {

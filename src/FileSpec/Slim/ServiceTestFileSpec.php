@@ -1,7 +1,7 @@
 <?php
-namespace Davework\FileSpec\Slim;
+namespace Dbould\Davework\FileSpec\Slim;
 
-use Davework\FileSpec\FileSpecInterface;
+use Dbould\Davework\FileSpec\FileSpecInterface;
 
 class ServiceTestFileSpec implements FileSpecInterface
 {
@@ -35,7 +35,7 @@ class ServiceTestFileSpec implements FileSpecInterface
 
     public function getFileContent($template)
     {
-        $classToTest = 'Davework\Service\\' . $this->requestedName;
+        $classToTest = 'Dbould\Davework\Service\\' . $this->requestedName;
 
         return sprintf(
             $template,

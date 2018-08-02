@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Functional\Command;
 
-use Davework\Command\Slim\CreateProjectCommand;
+use Dbould\Davework\Command\Slim\CreateProjectCommand;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Process\Process;
 use Tests\SlimTestCase;

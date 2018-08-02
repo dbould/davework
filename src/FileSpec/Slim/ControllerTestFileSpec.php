@@ -1,7 +1,7 @@
 <?php
-namespace Davework\FileSpec\Slim;
+namespace Dbould\Davework\FileSpec\Slim;
 
-use Davework\FileSpec\FileSpecInterface;
+use Dbould\Davework\FileSpec\FileSpecInterface;
 
 class ControllerTestFileSpec implements FileSpecInterface
 {

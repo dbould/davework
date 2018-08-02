@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Functional\Service;
 
-use Dbould\Davework\Service\TestService;
+use Tests\Functional\Service\TestService;
 use Tests\SlimTestCase;
 
 class TestServiceTest extends SlimTestCase

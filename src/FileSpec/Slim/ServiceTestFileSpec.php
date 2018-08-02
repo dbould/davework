@@ -35,7 +35,7 @@ class ServiceTestFileSpec implements FileSpecInterface
 
     public function getFileContent($template)
     {
-        $classToTest = 'Dbould\Davework\Service\\' . $this->requestedName;
+        $classToTest = $this->topLevelNamespace . '\\' . $this->requestedName;
 
         return sprintf(
             $template,

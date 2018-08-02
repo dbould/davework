@@ -1,5 +1,5 @@
 <?php
-namespace Dbould\Davework\Factory;
+namespace Dbould\Davework\Field\Factory;
 
 class MooMooServiceFactory
 {

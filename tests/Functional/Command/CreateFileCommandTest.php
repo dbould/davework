@@ -212,7 +212,7 @@ TESTSERVICE;
 
         $expected = <<<'TESTSERVICE'
 <?php
-namespace Dbould\Davework\Service;
+namespace Dbould\Davework\Field\Service;
 
 class MooMooService
 {

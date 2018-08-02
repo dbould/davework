@@ -12,13 +12,21 @@ class FactoryTestFileSpec implements FileSpecInterface
     private $typeToTest;
     private $requestedName;
     private $topLevelTestNamespace;
+    private $moduleNamespace;
 
     public function __construct($topLevelNamespace, $topLevelTestNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module, $factoriesLiveWithClasses)
     {
+        if (!is_null($module)) {
+            $modulePath = '/' . $module;
+            $this->moduleNamespace = '\\' . $module;
+        } else {
+            $modulePath = '';
+            $this->moduleNamespace = '';
+        }
+
         $this->topLevelNamespace = $topLevelNamespace;
         $this->className = $fileName;
 
-        $modulePath = !is_null($module) ? '/' . $module : '';
         $factoryFolder = $factoriesLiveWithClasses === true ? '/' . $requestedType . '/' : '/Factory/';
         $this->filePath = $baseFilePath . $modulePath . $factoryFolder . $fileName . '.php';
 
@@ -42,7 +50,7 @@ class FactoryTestFileSpec implements FileSpecInterface
 
     public function getFileContent($template)
     {
-        $classToTest = $this->topLevelNamespace . '\\' . $this->typeToTest . '\\' . $this->requestedName;
+        $classToTest = $this->topLevelNamespace . $this->moduleNamespace . '\\' . $this->typeToTest . '\\' . $this->requestedName;
 
         return sprintf(
             $template,

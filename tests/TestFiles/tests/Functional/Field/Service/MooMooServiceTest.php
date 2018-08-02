@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Functional\Service;
 
-use Dbould\Davework\Service\MooMooService;
+use Dbould\Davework\Field\Service\MooMooService;
 use Tests\SlimTestCase;
 
 class MooMooServiceTest extends SlimTestCase

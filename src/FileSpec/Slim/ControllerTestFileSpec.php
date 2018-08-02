@@ -40,7 +40,7 @@ class ControllerTestFileSpec implements FileSpecInterface
     {
         return sprintf(
             $template,
-            $this->topLevelTestNamespace . '\Functional\Controller',
+            $this->topLevelTestNamespace . '\Controller',
             $this->className);
     }
 

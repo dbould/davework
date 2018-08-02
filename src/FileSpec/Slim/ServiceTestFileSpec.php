@@ -52,7 +52,7 @@ class ServiceTestFileSpec implements FileSpecInterface
 
         return sprintf(
             $template,
-            $this->topLevelTestNamespace . '\Functional\Service',
+            $this->topLevelTestNamespace . '\Service',
             $classToTest,
             $this->className,
             $this->className

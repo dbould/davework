@@ -1,7 +1,7 @@
 {
     "topLevelNamespace":"Dbould\\Davework",
     "rootDirectory":"TestFiles/src/",
-    "testNamespace":"Tests",
+    "testNamespace":"Tests\\Functional",
     "testsDirectory":"TestFiles/tests/Functional",
     "newProjectDirectory":"tests/TestFiles/project",
     "factoriesLiveWithClasses":false

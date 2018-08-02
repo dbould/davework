@@ -244,7 +244,7 @@ TESTSERVICE;
 <?php
 namespace Tests\Functional\Service;
 
-use Tests\Functional\Service\TestService;
+use Dbould\Davework\Factory\TestService;
 use Tests\SlimTestCase;
 
 class TestServiceTest extends SlimTestCase

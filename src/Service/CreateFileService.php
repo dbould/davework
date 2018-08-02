@@ -62,9 +62,11 @@ class CreateFileService implements CreateFileInterface
     {
         $rootDirectory = $this->fileSpecTypeService->getRootDirectory($type);
         $topLevelNamespace = $this->fileSpecTypeService->getTopLevelNamespace($type);
+        $topLevelTestNamespace = $this->fileSpecTypeService->getTopLevelTestNamespace();
 
         $fileSpec = new $className(
             $topLevelNamespace,
+            $topLevelTestNamespace,
             $fileName,
             $rootDirectory,
             $requestedName,

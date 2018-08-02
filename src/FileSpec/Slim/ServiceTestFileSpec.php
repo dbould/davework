@@ -10,10 +10,12 @@ class ServiceTestFileSpec implements FileSpecInterface
     private $filePath;
     private $associatedFiles;
     private $requestedName;
+    private $requestedType;
+    private $topLevelTestNamespace;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module, $factoriesLiveWithClasses)
+    public function __construct($topLevelNamespace, $topLevelTestNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module, $factoriesLiveWithClasses)
     {
-        $this->topLevelNamespace = $topLevelNamespace . '\Functional\Service';
+        $this->topLevelNamespace = $topLevelNamespace;
         $this->className = $fileName;
 
         $modulePath = !is_null($module) ? '/' . $module : '';
@@ -26,6 +28,9 @@ class ServiceTestFileSpec implements FileSpecInterface
         } else {
             $this->requestedName = $requestedName;
         }
+
+        $this->requestedType = $requestedType;
+        $this->topLevelTestNamespace = $topLevelTestNamespace;
     }
 
     public function getAssociatedFiles()
@@ -35,11 +40,11 @@ class ServiceTestFileSpec implements FileSpecInterface
 
     public function getFileContent($template)
     {
-        $classToTest = $this->topLevelNamespace . '\\' . $this->requestedName;
+        $classToTest = $this->topLevelNamespace . '\\' . $this->requestedType . '\\' . $this->requestedName;
 
         return sprintf(
             $template,
-            $this->topLevelNamespace,
+            $this->topLevelTestNamespace . '\Functional\Service',
             $classToTest,
             $this->className,
             $this->className

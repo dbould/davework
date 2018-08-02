@@ -9,16 +9,18 @@ class ControllerTestFileSpec implements FileSpecInterface
     private $className;
     private $filePath;
     private $associatedFiles;
+    private $topLevelTestNamespace;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module, $factoriesLiveWithClasses)
+    public function __construct($topLevelNamespace, $topLevelTestNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module, $factoriesLiveWithClasses)
     {
-        $this->topLevelNamespace = $topLevelNamespace . '\Functional\Controller';
+        $this->topLevelNamespace = $topLevelNamespace;
         $this->className = $fileName;
 
         $modulePath = !is_null($module) ? '/' . $module : '';
         $this->filePath = $baseFilePath . $modulePath . '/Controller/' . $fileName . '.php';
 
         $this->associatedFiles = [];
+        $this->topLevelTestNamespace = $topLevelTestNamespace;
     }
 
     public function getAssociatedFiles()
@@ -30,7 +32,7 @@ class ControllerTestFileSpec implements FileSpecInterface
     {
         return sprintf(
             $template,
-            $this->topLevelNamespace,
+            $this->topLevelTestNamespace . '\Functional\Controller',
             $this->className);
     }
 

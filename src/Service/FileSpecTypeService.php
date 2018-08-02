@@ -37,6 +37,11 @@ class FileSpecTypeService
             $topLevelNamespace = $this->topLevelNamespace;
         }
 
-        return $topLevelNamespace;
+        return $topLevelNamespace = $this->topLevelNamespace;;
+    }
+
+    public function getTopLevelTestNamespace()
+    {
+        return $this->topLevelTestNamespace;
     }
 }

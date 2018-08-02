@@ -10,7 +10,7 @@ class ControllerFileSpec implements FileSpecInterface
     private $filePath;
     private $associatedFiles;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module, $factoriesLiveWithClasses)
+    public function __construct($topLevelNamespace, $topLevelTestNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module, $factoriesLiveWithClasses)
     {
         $this->namespace = $topLevelNamespace . '\Controller';
         $this->className = $fileName;

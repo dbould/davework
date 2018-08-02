@@ -11,10 +11,11 @@ class FactoryTestFileSpec implements FileSpecInterface
     private $associatedFiles;
     private $typeToTest;
     private $requestedName;
+    private $topLevelTestNamespace;
 
-    public function __construct($topLevelNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module, $factoriesLiveWithClasses)
+    public function __construct($topLevelNamespace, $topLevelTestNamespace, $fileName, $baseFilePath, $requestedName, $requestedType, $module, $factoriesLiveWithClasses)
     {
-        $this->topLevelNamespace = $topLevelNamespace . '\Functional\Factory';
+        $this->topLevelNamespace = $topLevelNamespace;
         $this->className = $fileName;
 
         $modulePath = !is_null($module) ? '/' . $module : '';
@@ -30,6 +31,8 @@ class FactoryTestFileSpec implements FileSpecInterface
         } else {
             $this->requestedName = $requestedName;
         }
+
+        $this->topLevelTestNamespace = $topLevelTestNamespace;
     }
 
     public function getAssociatedFiles()
@@ -39,11 +42,11 @@ class FactoryTestFileSpec implements FileSpecInterface
 
     public function getFileContent($template)
     {
-        $classToTest = 'Dbould\Davework\\' . $this->typeToTest . '\\' . $this->requestedName;
+        $classToTest = $this->topLevelNamespace . '\\' . $this->typeToTest . '\\' . $this->requestedName;
 
         return sprintf(
             $template,
-            $this->topLevelNamespace,
+            $this->topLevelTestNamespace . '\Functional\Factory',
             $classToTest,
             $this->className,
             $classToTest,

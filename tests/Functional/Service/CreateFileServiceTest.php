@@ -142,9 +142,9 @@ class TestFactoryTest extends SlimTestCase
 {
     public function testItReturnsAnInstance()
     {
-        $actual = $this->getContainer()->get(Dbould\Davework\Factory\TestFactory::class);
+        $actual = $this->getContainer()->get(TestFactory::class);
 
-        $this->assertInstanceOf(Dbould\Davework\Factory\TestFactory::class, $actual);
+        $this->assertInstanceOf(TestFactory::class, $actual);
     }
 }
 
@@ -291,9 +291,9 @@ class TestServiceFactoryTest extends SlimTestCase
 {
     public function testItReturnsAnInstance()
     {
-        $actual = $this->getContainer()->get(Dbould\Davework\Service\TestService::class);
+        $actual = $this->getContainer()->get(TestService::class);
 
-        $this->assertInstanceOf(Dbould\Davework\Service\TestService::class, $actual);
+        $this->assertInstanceOf(TestService::class, $actual);
     }
 }
 

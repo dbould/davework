@@ -8,8 +8,8 @@ class TestControllerFactoryTest extends SlimTestCase
 {
     public function testItReturnsAnInstance()
     {
-        $actual = $this->getContainer()->get(Dbould\Davework\Controller\TestController::class);
+        $actual = $this->getContainer()->get(TestController::class);
 
-        $this->assertInstanceOf(Dbould\Davework\Controller\TestController::class, $actual);
+        $this->assertInstanceOf(TestController::class, $actual);
     }
 }

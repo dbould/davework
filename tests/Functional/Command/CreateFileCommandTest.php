@@ -173,9 +173,9 @@ class MooMooServiceFactoryTest extends SlimTestCase
 {
     public function testItReturnsAnInstance()
     {
-        $actual = $this->getContainer()->get(Dbould\Davework\Service\MooMooService::class);
+        $actual = $this->getContainer()->get(MooMooService::class);
 
-        $this->assertInstanceOf(Dbould\Davework\Service\MooMooService::class, $actual);
+        $this->assertInstanceOf(MooMooService::class, $actual);
     }
 }
 

@@ -57,8 +57,8 @@ class FactoryTestFileSpec implements FileSpecInterface
             $this->topLevelTestNamespace . '\Factory',
             $classToTest,
             $this->className,
-            $classToTest,
-            $classToTest
+            $this->requestedName,
+            $this->requestedName
         );
     }
 

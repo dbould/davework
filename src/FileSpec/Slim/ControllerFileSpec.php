@@ -16,7 +16,7 @@ class ControllerFileSpec implements FileSpecInterface
         $this->className = $fileName;
 
         $modulePath = !is_null($module) ? $module . '/' : '';
-        $this->filePath = $baseFilePath . '/src/' . $modulePath . 'Controller/' . $fileName . '.php';
+        $this->filePath = $baseFilePath . '/' . $modulePath . 'Controller/' . $fileName . '.php';
 
         $this->associatedFiles = [
             ControllerTestFileSpec::class,

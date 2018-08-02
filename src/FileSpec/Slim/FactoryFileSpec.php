@@ -18,7 +18,7 @@ class FactoryFileSpec implements FileSpecInterface
 
         $modulePath = !is_null($module) ? $module . '/' : '';
         $factoryFolder = $factoriesLiveWithClasses === true ? $requestedType . '/' : 'Factory/';
-        $this->filePath = $baseFilePath . '/src/' . $modulePath . $factoryFolder . $fileName . '.php';
+        $this->filePath = $baseFilePath . '/' . $modulePath . $factoryFolder . $fileName . '.php';
 
         $this->classToReturn = str_replace('Factory', '', $fileName);
 

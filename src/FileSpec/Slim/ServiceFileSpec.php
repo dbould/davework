@@ -16,7 +16,7 @@ class ServiceFileSpec implements FileSpecInterface
         $this->className = $fileName;
 
         $modulePath = !is_null($module) ? $module . '/' : '';
-        $this->filePath = $baseFilePath . '/src/' . $modulePath . 'Service/' . $fileName . '.php';
+        $this->filePath = $baseFilePath . '/' . $modulePath . 'Service/' . $fileName . '.php';
 
         $this->associatedFiles = [
             ServiceTestFileSpec::class,

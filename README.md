@@ -55,7 +55,9 @@ eg:
 ```
 
 ## Commands
-Create new file with associated files
+Create new file with associated files. There is no need to append the type of the file to the end of the fileName, it
+will be added for you.
+
 ```bash
 vendor/bin/davework slim:create-file fileName type [moduleName]
 ```

@@ -57,7 +57,7 @@ eg:
 ## Commands
 Create new file with associated files
 ```bash
-bin/console slim:create-file fileName type [moduleName]
+vendor/bin/davework slim:create-file fileName type [moduleName]
 ```
 
 ## Tests

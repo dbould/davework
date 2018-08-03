@@ -1,5 +1,5 @@
 <?php
-namespace Tests\Functional\Factory;
+namespace Tests\Functional\Field\Factory;
 
 use Dbould\Davework\Field\Service\MooMooService;
 use Tests\SlimTestCase;

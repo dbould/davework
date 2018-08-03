@@ -54,7 +54,7 @@ class FactoryTestFileSpec implements FileSpecInterface
 
         return sprintf(
             $template,
-            $this->topLevelTestNamespace . '\Factory',
+            $this->topLevelTestNamespace . $this->moduleNamespace . '\Factory',
             $classToTest,
             $this->className,
             $this->requestedName,

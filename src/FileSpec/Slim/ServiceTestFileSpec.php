@@ -27,7 +27,7 @@ class ServiceTestFileSpec implements FileSpecInterface
         $this->topLevelNamespace = $topLevelNamespace;
         $this->className = $fileName;
 
-        $this->filePath = $baseFilePath . $modulePath . '/' . '/Service/' . $fileName . '.php';
+        $this->filePath = $baseFilePath . $modulePath . '/Service/' . $fileName . '.php';
 
         $this->associatedFiles = [];
 
@@ -52,7 +52,7 @@ class ServiceTestFileSpec implements FileSpecInterface
 
         return sprintf(
             $template,
-            $this->topLevelTestNamespace . '\Service',
+            $this->topLevelTestNamespace . $this->moduleNamespace . '\Service',
             $classToTest,
             $this->className,
             $this->className

@@ -355,4 +355,46 @@ TESTSERVICE;
 
         $this->assertFileExists(__DIR__ . '/../../TestFiles/src/Service/TestServiceFactory.php');
     }
+
+    public function testItCreatesTestFactoryTestCorrectlyForServiceFileWithModule()
+    {
+        $fileNames = [
+            __DIR__ . '/../../TestFiles/src/Diary/Service/TestService.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Diary/Service/TestServiceTest.php',
+            __DIR__ . '/../../TestFiles/src/Diary/Factory/TestServiceFactory.php',
+            __DIR__ . '/../../TestFiles/tests/Functional/Diary/Factory/TestServiceFactoryTest.php',
+        ];
+
+        foreach ($fileNames as $fileName) {
+            if (file_exists($fileName)) {
+                unlink($fileName);
+            }
+        }
+
+        $service = $this->getContainer()->get(CreateFileService::class);
+        $service->create('Test', 'Service', 'Diary');
+
+        $expected = <<<'TESTSERVICE'
+<?php
+namespace Tests\Functional\Diary\Factory;
+
+use Dbould\Davework\Diary\Service\TestService;
+use Tests\SlimTestCase;
+
+class TestServiceFactoryTest extends SlimTestCase
+{
+    public function testItReturnsAnInstance()
+    {
+        $actual = $this->getContainer()->get(TestService::class);
+
+        $this->assertInstanceOf(TestService::class, $actual);
+    }
+}
+
+TESTSERVICE;
+
+        $actual = file_get_contents(__DIR__ . '/../../TestFiles/tests/Functional/Diary/Factory/TestServiceFactoryTest.php');
+
+        $this->assertEquals($expected, $actual);
+    }
 }

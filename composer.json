@@ -1,6 +1,10 @@
 {
     "name": "dbould/davework",
+    "type": "library",
     "description": "A framework scaffolder",
+    "keywords": ["scaffolder", "scaffold", "framework", "slim"],
+    "homepage": "https://github.com/dbould/davework",
+    "license": "MIT",
     "authors": [
         {
             "name": "Dave Bould",

@@ -1,12 +1,63 @@
 # davework
-An opinionated Framework scaffolder.
+A Framework scaffolder.
 
 Currently supports Slim Framework only.
+
+## Installation
+```bash
+composer require --dev dbould/davework
+cp vendor/dbould/davework.json.example myProjectRoot/davework.json
+```
+I'm currently still working on fixing the Phar archive, but I'll add a link and instructions when that's finished.
+
+## Configuration
+### topLevelNamespace
+eg:
+```json
+{
+    "topLevelNamespace": "Dbould\\Davework"
+}
+```
+
+### rootDirectory
+Top level code directory
+eg:
+```json
+{
+    "rootDirectory": "src/"
+}
+```
+
+### testNamespace
+eg:
+```json
+{
+    "testNamespace": "Test"
+}
+```
+
+### testsDirectory
+eg:
+```json
+{
+    "testsDirectory": "test/"
+}
+```
+
+### factoriesLiveWithClasses
+Optional. If set to true, factory files will be created in the same directory as the class files they're associated 
+with. If set to false, factories go into a separate Factory/ directory.
+eg: 
+```json
+{
+    "factoriesLiveWithClasses": false
+}
+```
 
 ## Commands
 Create new file with associated files
 ```bash
-bin/console slim:create-file -f fileName -t type
+bin/console slim:create-file fileName type [moduleName]
 ```
 
 ## Tests
